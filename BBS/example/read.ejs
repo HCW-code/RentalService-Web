@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>board</title>
+</head>
+<body>
+    <%
+        console.log("rows : " + JSON.stringify(rows));
+        console.log("rows : " + rows.length);
+        var column = rows[0];
+    %>
+    <div class="container">
+    <div class="row">
+    <div class="col-lg-9">
+        <hr>
+        <H2><a href="/bbs/home">게시글</a></H2>
+        <hr>
+        <div class="container">
+        <div class="row">
+            <table border="1" class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+            <tbody>
+                <tr>
+                    <td>글제목</td>
+                    <td colspan="2"><%=column[1]%></td>
+                </tr>
+                <tr>
+                    <td>작성자</td>
+                    <td colspan="2"><%=column[2]%></td>
+                </tr>
+                <tr>
+                    <td>내용</td>
+                    <td colspan="2"><%=column[3]%></td>
+                </tr>
+                <tr>
+                    <td>작성일자</td>
+                    <td colspan="2"><%=column[4]%></td>
+                </tr>
+                <tr>
+                    <td>조회수</td>
+                    <td colspan="2"><%=column[5]%></td>
+                </tr>
+            </tbody>
+        </table>
+        <a href="/bbs/home">돌아가기</a>
+
+        <a href="/bbs/form?brdno=<%=column[0]%>">수정</a>
+        <a onClick="return confirm('정말로 삭제하겠습니까?')" href="/bbs/delete?brdno=<%=column[0]%>">삭제</a>
+    </div>
+    </div>
+        <br>
+        <hr>
+        <a href="/bbs/wlist?bbs_no=<%=column[0]%>">댓글 보기</a>
+    </div>
+    </div>
+    </div>
+</body>
+</html>

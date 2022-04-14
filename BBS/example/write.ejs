@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Bootstrap core CSS -->
+    <link href="public/vendor/bootstrap/css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="public/css1/portfolio-item.css" rel="stylesheet">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>댓글</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+        <div class="col-lg-9">
+        <table border="1" class="table table-hover">  
+            <thead>        <!--댓글 목록-->
+             <tr>     
+             <th>순서</th>          
+             <th>작성자</th>          
+             <th>댓글내용</th>          
+             <th>날짜</th>  
+             </tr>      
+            </thead>
+            <tbody>
+                <%  <!--내용-->
+                     for(var i=0; i<rows.length; i++) {
+                         column = rows[i];
+                %>
+                    <tr>
+                        <td><%=column[0]%></a></td>
+                        <td><%=column[2]%></a></td>
+                        <td><%=column[3]%></a></td>
+                        <td><%=column[4]%></a></td>
+                        <td><a href="/bbs/wform?brdno1=<%=column[0]%>">수정</a></td>
+                        <td><a onClick="return confirm('정말로 삭제하겠습니까?')" href="/bbs/wdelete?brdno1=<%=column[0]%>&bbs_no=<%=column[1]%>">삭제</a></td>  
+                    </form>      
+                    </tr>
+                <%
+                     }
+                %>
+            </tbody>
+            </table>
+            <form name="form2" action="/bbs/write" method="post"> <!--댓글 입력-->
+                <br>
+                <hr>
+                <p>댓글 입력</p> 
+                <div class="input-group"> 
+                <!--작성자를 입력 받으면 그것을 brdwriter1에 넣는다.-->
+                 <textarea type="text" class="form-control" placeholder="작성자" name="brdwriter1" maxlength="10" rows=2 cols=10></textarea>
+                <!--내용을 입력 받으면 그것을 brdmemo1 넣는다.-->
+                 <textarea type="text" class="form-control" placeholder="댓글을 입력하세요" name="brdmemo1" maxlength="80" rows=2 cols=85></textarea>
+                 <div class="input-group-btn">  
+                 <br>              
+                 <input type=reset value="저장" onclick="form2.submit()" /></div> <!--저장 버튼 클릭 시 form문안에 변수를 모두 /bbs/write로 보낸다..-->
+                 <a href="/bbs/read?bbs_no=<%=column[1]%>" class="btn btn-primary pull-right">게시글로 이동</a> <!--게시글 번호를 확인하여 해당 게시글로 이동-->
+                 <input type="hidden" name="bbs_no" value="<%=column[1]%>"> <!--댓글 달려있는 게시글 번호 인식 위해 변수를 보낸다.-->
+                 <input type="hidden" name="brdno1" value="">
+                    </div>
+                <br>
+               </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

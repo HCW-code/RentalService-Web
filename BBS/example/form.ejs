@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/bbs/css/bootstrap.css" type="text/css">
+<link rel="stylesheet" href="/bbs/css/custom.css" type="text/css">
+
+<title>board</title>
+</head>
+<body>
+    <div class="container">
+		<div class="row">
+            <H2><a href="/bbs/home">게시판</a></H2> <!--게시판 버튼 클릭시 게시판 목록으로 이동-->
+            <HR>
+    <form name="form1" action="/bbs/save" method="post">    
+        <table border="1" class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+            <thead>
+                <tr>
+                    <th colspan="2" style="background-color: #eeeeee; text-align: center;">게시판 글쓰기</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>작성자</td> <!--작성자를 입력 받으면 그것을 brdwriter에 넣는다.-->
+                    <td><textarea type="text" class="form-control" placeholder="작성자" name="brdwriter" maxlength="20" rows=2 cols=115 ></textarea></td>
+                </tr>
+                <tr>
+                    <td>제목</td>   <!--제목을 입력 받으면 그것을 brdtitle 넣는다.-->
+                    <td><textarea type="text" class="form-control" placeholder="제목" name="brdtitle" maxlength="100" rows=2 cols=115></textarea></td>
+                </tr>
+                <tr>
+                    <td>내용</td>   <!--내용을 입력 받으면 그것을 brdmemo 넣는다.-->
+                    <td><textarea class="form-control" placeholder="글 내용" name="brdmemo" maxlength="9000" style="height:350px; width:820px;"></textarea></td>
+                </tr>
+            </tbody>
+        <td colspan=2 align=center>
+        <input type=reset value="저장" onclick="form1.submit()" />  <!--저장 버튼 클릭 시 form문안에 변수를 모두 /bbs/save로 보낸다..-->
+        <input type=reset value="취소" onclick="history.back(-1)" /> <!--취소 버튼 클릭 시 이전 화면으로 간다.-->
+        <input type="hidden" name="brdno" value=""> <!--버튼 클릭시 brdno변수도 같이 보낸다.-->
+        </td>
+    </table>
+    </form>
+    </div>
+    </div>
+    <script src="https://code.jquery.com/jquery.js"></script>
+	<script src="js/bootstrap.js"></script>
+</body>
+</html>
