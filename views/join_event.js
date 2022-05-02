@@ -72,22 +72,22 @@ function checkPw() {
         pwMsgArea.style.paddingRight = "93px";
         error[1].style.display = "block";
         pwMsg.style.display = "block";
-        pwImg1.src = "assets/images/m_icon_not_use.png";
+        pwImg1.src = "/public/assets/images/m_icon_not_use.png";
     } else {
         error[1].style.display = "none";
         pwMsg.innerHTML = "안전";
         pwMsg.style.display = "block";
         pwMsg.style.color = "#03c75a";
-        pwImg1.src = "assets/images/m_icon_safe.png";
+        pwImg1.src = "/public/assets/images/m_icon_safe.png";
     }
 }
 
 function comparePw() {
     if(pw2.value === pw1.value && pw2.value != "") {
-        pwImg2.src = "assets/images/m_icon_check_enable.png";
+        pwImg2.src = "/public/assets/images/m_icon_check_enable.png";
         error[2].style.display = "none";
     } else if(pw2.value !== pw1.value) {
-        pwImg2.src = "assets/images/m_icon_check_unenable.png";
+        pwImg2.src = "/public/assets/images/m_icon_check_unenable.png";
         error[2].innerHTML = "비밀번호가 일치하지 않습니다.";
         error[2].style.display = "block";
     } 

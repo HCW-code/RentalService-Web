@@ -120,7 +120,7 @@ router.post('/new-anncmnt', async (req, res) => {//공지사항 작성 후 저�
         title,
         cont,
         num: documents.length+1,
-        date: tm1.timestamp
+        date: tm1.timestamp()
     })
     currentpage =1;
     
@@ -176,6 +176,7 @@ router.get('/register_list_detail', async function(req, res, next) {//회원가�
     id = req.query.id;
     ID = req.query.ID;
     Password = req.query.Password;
+    Name = req.query.Name;
     store_picture = req.query.store_picture;
     store_price = req.query.store_price;
     store_name = req.query.store_name;
@@ -184,7 +185,7 @@ router.get('/register_list_detail', async function(req, res, next) {//회원가�
     store_number = req.query.store_number;
     main_number = req.query.main_number;
     Email = req.query.Email;
-    result=[ID, Password, store_picture, store_price, store_name, store_address, store_number, main_number, Email, id];
+    result=[ID, Password, store_picture, store_price, store_name, store_address, store_number, main_number, Email, id, Name];
     console.log(result);
 
 res.render('register_list_detail', result);
@@ -207,6 +208,7 @@ router.get("/user-allow", async(req, res) => {//회원가입 승인
 
     ID = req.query.ID;
     Password = req.query.Password;
+    Name = req.query.Name;
     store_picture = req.query.store_picture;
     store_price = req.query.store_price;
     store_name = req.query.store_name;
@@ -215,16 +217,21 @@ router.get("/user-allow", async(req, res) => {//회원가입 승인
     store_number = req.query.store_number;
     main_number = req.query.main_number;
     Email = req.query.Email;
-    console.log(Email)
+    console.log(Name)
 
     console.log(id);
 
     
-    await db.collection('USER').doc(id).delete()
+    
 
+    currentpage =1;
+    emailsend.sendmail(allow = 1, toEmail = Email).catch(console.error);
+
+    console.log("234141111111111111111111111111");
     await db.collection('USER_allow').add({
         ID: ID,
         Password: Password,
+        Name: Name,
         store_picture: store_picture,
         store_price: store_price,
         store_name: store_name,
@@ -233,25 +240,32 @@ router.get("/user-allow", async(req, res) => {//회원가입 승인
         main_number: main_number,
         Email: Email
     })
+
+    await db.collection('USER').doc(id).delete()
    
-    currentpage =1;
-    emailsend.sendmail(allow = 1, toEmail = Email).catch(console.error);
     res.redirect('register_list?currentpage=1')
 });
 
-router.post('/new-information_change', async (req, res) => {//매장정보 변경 신청서 저장
+router.post('/new-information_change/:users', async (req, res) => {//매장정보 변경 신청서 저장
     const querySnapshot = await db.collection('web_request').get()
     const documents = querySnapshot.docs.map(doc => ({ 
         ...doc.data()
     }))
 
     const { title, cont } = req.body
+    console.log(users)
+    console.log(users)
+    console.log(users)
+    console.log(users)
+    console.log(users)
+
 
     await db.collection('web_request').add({
+        ID: users,
         title,
         cont,
         num: documents.length+1,
-        date: tm1.timestamp
+        date: await tm1.timestamp()
     })
     
     res.redirect('/')
@@ -260,9 +274,10 @@ router.post('/new-information_change', async (req, res) => {//매장정보 변�
 })
 
 router.get('/information_change', async function(req, res, next) {//매장정보 변경 신청 폼으로 이동
-    var validation = auth.validation(req, res);
-    if (validation == true){
-    res.render('information_change');
+    var {login, logout, users, admin} = auth.statusUI(req, res);
+
+    if (users != null){
+    res.render('information_change', {login, logout, users, admin});
 } else {
     msg.info("회원가입/로그인 후 이용하세요");
      res.redirect('/home'); 
@@ -288,19 +303,64 @@ router.get('/request_list', async function(req, res, next) {//매장정보 변�
 });
 
 router.get('/request_list_detail', async function(req, res, next) {//매장정보 변경 신청 상세 정보
+ID = req.query.ID;
 id = req.query.id;
 title = req.query.title;
 content = req.query.content;
 
-res.render('request_list_detail', {title, content, id});
+res.render('request_list_detail', {title, content, id, ID});
 });
 
-router.get("/information_edit", async(req, res) => {//진행중
-    id = req.query.id;
-    //const querySnapshot = await db.collection('web_anncmnt').doc(id).get();
+router.get("/information_change-deny", async(req, res) => {//정보변경 거부
 
-    res.render('information_edit', {id});
+    id = req.query.id;
+    ID = req.query.ID;
+
+    var dbdata = await db.collection('USER_allow').where("ID", "==", ID)
+    .get()
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            userdata = doc.data()
+            console.log(doc.data().ID);
+        });
+    })
+    .catch((error) => {
+        console.log("Error getting documents: ", error);
+    });
+    await db.collection('web_request').doc(id).delete()
+    emailsend.sendmail(allow = 2, toEmail = userdata.Email).catch(console.error);
+
+    res.redirect('/request_list?currentpage=1')
+});
+
+router.get("/information_edit", async(req, res) => {//승인 누를시 정보 수정칸 나옴
+    
+    ID = req.query.ID;
+    var id;
+    //const querySnapshot = await db.collection('web_anncmnt').doc(id).get();
+    var dbdata = await db.collection('USER_allow').where("ID", "==", ID)
+    .get()
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            id = doc.id,
+            userdata = doc.data()
+        });
+    })
+    .catch((error) => {
+        console.log("Error getting documents: ", error);
+    });
+
+    res.render('information_edit', dbdata);
 })
 
+router.post('/information_update/:id', async(req, res) => {//공지사항 수정후 저장
+    const {id} = req.params
+
+    //emailsend.sendmail(allow = 3, toEmail = userdata.Email).catch(console.error);
+
+    await db.collection('USER_allow').doc(id).update(req.body)
+
+    res.redirect('/')
+})
 
 module.exports = router;

@@ -125,7 +125,7 @@
                     <!-- navbar menu -->
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="index.html">Home</a></li>                    
+                            <li><a href="/">Home</a></li>                    
                             <li><a href="#features">스키이야기</a></li>
                             <li><a href="#business">광고신청</a></li>
                             <li><a href="information_change.html">매장정보 변경 신청</a></li>
@@ -147,18 +147,29 @@
                 <div class="board_title">
                     <strong>공지사항</strong>                    
                 </div>                
-                <form action="/update-anncmnt/<%=id%>" method="post" class="board_write_wrap">
+                <form action="/information_update/<%=id%>" method="post" class="board_write_wrap">
                     <div class="board_write">
-                        <div class="title">
+                        <div>
                             <dl>
-                                <dt>제목</dt>
-                                <dd><input name="title" type="text" placeholder="제목 입력" value="<%=title%>"></dd>
+                                <dt>매장 이름</dt>
+                                <dd><input name="store_name" type="text" placeholder="제목 입력" value="<%=store_name%>"></dd>
                             </dl>
-                        </div>                        
-                        <div class="cont">
-                            <dt>내용</dt>
-                            <dd><textarea name="cont" placeholder="내용 입력" rows="13" cols="70"><%=content%></textarea></dd>
+                        
+                        <dl>
+                            <dt>매장 번호</dt>
+                            <dd><input name="store_number" type="text" placeholder="제목 입력" value="<%=store_number%>"></dd>
+                        </dl>
                         </div>
+                        <div>
+                        <dl>
+                            <dt>매장 주소</dt>
+                            <dd><input name="store_address" type="text" placeholder="제목 입력" value="<%=store_address%>"></dd>
+                        </dl>
+                        <dl>
+                            <dt>매장 가격</dt>
+                            <dd><input name="store_price" type="text" placeholder="제목 입력" value="<%=store_price%>"></dd>
+                        </dl>
+                        </div>              
                     </div>
                     <div class="bt_wrap">                        
                         <button class="on">등록</button>
