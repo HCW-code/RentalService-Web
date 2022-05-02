@@ -222,7 +222,7 @@ content = req.query.content;
 res.render('request_list_detail', {title, content, id});
 });
 
-router.get("/information_edit", async(req, res) => {//
+router.get("/information_edit", async(req, res) => {//진행중
     id = req.query.id;
     //const querySnapshot = await db.collection('web_anncmnt').doc(id).get();
 
