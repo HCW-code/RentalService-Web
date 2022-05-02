@@ -46,13 +46,14 @@ router.post('/join_save', async function (req, res, next) {
         ID,
         Password,
         Password_check,
+        name,
         firstEmail,
         lastEmail,
         store_name,
         store_address,
         store_number,
         main_number,
-        store_pice,
+        store_price,
         store_picture
     } = req.body
 
@@ -61,12 +62,13 @@ router.post('/join_save', async function (req, res, next) {
         .add({
             ID: ID,
             Password: Password,
+            Name: name,
             Email: firstEmail + "@" + lastEmail,
             store_name: store_name,
             store_address: store_address,
             store_number: store_number,
             main_number: main_number,
-            store_pice: store_pice,
+            store_price: store_price,
             store_picture: store_picture
         })
 
@@ -175,14 +177,14 @@ router.get('/register_list_detail', async function(req, res, next) {//회원가�
     ID = req.query.ID;
     Password = req.query.Password;
     store_picture = req.query.store_picture;
-    store_pice = req.query.store_pice;
+    store_price = req.query.store_price;
     store_name = req.query.store_name;
     console.log(req.query.store_name);
     store_address = req.query.store_address;
     store_number = req.query.store_number;
     main_number = req.query.main_number;
     Email = req.query.Email;
-    result=[ID, Password, store_picture, store_pice, store_name, store_address, store_number, main_number, Email, id];
+    result=[ID, Password, store_picture, store_price, store_name, store_address, store_number, main_number, Email, id];
     console.log(result);
 
 res.render('register_list_detail', result);
@@ -206,7 +208,7 @@ router.get("/user-allow", async(req, res) => {//회원가입 승인
     ID = req.query.ID;
     Password = req.query.Password;
     store_picture = req.query.store_picture;
-    store_pice = req.query.store_pice;
+    store_price = req.query.store_price;
     store_name = req.query.store_name;
     console.log(req.query.store_name);
     store_address = req.query.store_address;
@@ -224,7 +226,7 @@ router.get("/user-allow", async(req, res) => {//회원가입 승인
         ID: ID,
         Password: Password,
         store_picture: store_picture,
-        store_pice: store_pice,
+        store_price: store_price,
         store_name: store_name,
         store_address: store_address,
         store_number: store_number,
