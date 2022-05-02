@@ -337,7 +337,9 @@ router.get("/information_edit", async(req, res) => {//승인 누를시 정보 �
     
     ID = req.query.ID;
     var id;
+    var send=[];
     //const querySnapshot = await db.collection('web_anncmnt').doc(id).get();
+
     var dbdata = await db.collection('USER_allow').where("ID", "==", ID)
     .get()
     .then((querySnapshot) => {
@@ -349,15 +351,18 @@ router.get("/information_edit", async(req, res) => {//승인 누를시 정보 �
     .catch((error) => {
         console.log("Error getting documents: ", error);
     });
+    //console.log(documents)
 
-    res.render('information_edit', dbdata);
+
+    send[0] = userdata;
+    res.render('information_edit', {send, id});
 })
 
 router.post('/information_update/:id', async(req, res) => {//공지사항 수정후 저장
     const {id} = req.params
 
     //emailsend.sendmail(allow = 3, toEmail = userdata.Email).catch(console.error);
-
+    console.log(id)
     await db.collection('USER_allow').doc(id).update(req.body)
 
     res.redirect('/')
