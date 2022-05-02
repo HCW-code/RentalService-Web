@@ -7,7 +7,7 @@ const router = Router();
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', function(req, res, next) {//HOME
     res.render('index');
 });
 
@@ -29,7 +29,7 @@ router.get('/announcement', async function(req, res, next) {//공지사항 게�
         res.render('announcement', {result, currentpage});
 });
 
-router.get('/announcement_detail', async function(req, res, next) {
+router.get('/announcement_detail', async function(req, res, next) {//공지사항 상세
     id = req.query.id;
     title = req.query.title;
     content = req.query.content;
@@ -39,7 +39,7 @@ router.get('/announcement_detail', async function(req, res, next) {
     res.render('announcement_detail', {title, content, id});
 });
 
-router.post('/new-anncmnt', async (req, res) => {
+router.post('/new-anncmnt', async (req, res) => {//공지사항 작성 후 저장
     const querySnapshot = await db.collection('web_anncmnt').get()
     const documents = querySnapshot.docs.map(doc => ({ 
         ...doc.data()
@@ -60,18 +60,18 @@ router.post('/new-anncmnt', async (req, res) => {
     // res.send('new anncmnt created')
 })
 
-router.get('/new_anncmnt', async function(req, res, next) {
+router.get('/new_anncmnt', async function(req, res, next) {//공지사항 작성 폼으로 이동
 
     res.render('new_anncmnt');
 });
 
-router.get("/delete-anncmnt/:id", async(req, res) => {
+router.get("/delete-anncmnt/:id", async(req, res) => {//공지사항 삭제
     await db.collection('web_anncmnt').doc(req.params.id).delete()
         
     res.redirect('/announcement?currentpage=1')
 });
 
-router.get("/edit_anncmnt", async(req, res) => {
+router.get("/edit_anncmnt", async(req, res) => {//공지사항 수정 폼으로 이동
     id = req.query.id;
     
     // res.send('edit anncmnt')
@@ -79,7 +79,7 @@ router.get("/edit_anncmnt", async(req, res) => {
     res.render('edit_anncmnt', {id});
 })
 
-router.post('/update-anncmnt/:id', async(req, res) => {
+router.post('/update-anncmnt/:id', async(req, res) => {//공지사항 수정후 저장
     const {id} = req.params
 
     await db.collection('web_anncmnt').doc(id).update(req.body)
@@ -87,7 +87,7 @@ router.post('/update-anncmnt/:id', async(req, res) => {
     res.redirect('/announcement?currentpage=1')
 })
 
-router.get('/register_list', async function(req, res, next) {
+router.get('/register_list', async function(req, res, next) {//회원가입 신청 게시판
     const querySnapshot = await db.collection('USER').get();
 
     const documents = querySnapshot.docs.map(doc => ({
@@ -103,7 +103,7 @@ router.get('/register_list', async function(req, res, next) {
     res.render('register_list', {result, currentpage});
 });
 
-router.get('/register_list_detail', async function(req, res, next) {
+router.get('/register_list_detail', async function(req, res, next) {//회원가입 신청 상세 정보
 
     id = req.query.id;
     ID = req.query.ID;
@@ -122,7 +122,7 @@ router.get('/register_list_detail', async function(req, res, next) {
 res.render('register_list_detail', result);
 });
 
-router.get("/user-deny", async(req, res) => {
+router.get("/user-deny", async(req, res) => {//회원가입 거부
 
     id = req.query.id;
     Email = req.query.Email;
@@ -134,7 +134,7 @@ router.get("/user-deny", async(req, res) => {
     res.redirect('/register_list?currentpage=1')
 });
 
-router.get("/user-allow", async(req, res) => {
+router.get("/user-allow", async(req, res) => {//회원가입 승인
     id = req.query.id;
 
     ID = req.query.ID;
@@ -171,7 +171,7 @@ router.get("/user-allow", async(req, res) => {
     res.redirect('register_list?currentpage=1')
 });
 
-router.post('/new-information_change', async (req, res) => {
+router.post('/new-information_change', async (req, res) => {//매장정보 변경 신청서 저장
     const querySnapshot = await db.collection('web_request').get()
     const documents = querySnapshot.docs.map(doc => ({ 
         ...doc.data()
@@ -191,12 +191,12 @@ router.post('/new-information_change', async (req, res) => {
     // res.send('new anncmnt created')
 })
 
-router.get('/information_change', async function(req, res, next) {
+router.get('/information_change', async function(req, res, next) {//매장정보 변경 신청 폼으로 이동
 
     res.render('information_change');
 });
 
-router.get('/request_list', async function(req, res, next) {
+router.get('/request_list', async function(req, res, next) {//매장정보 변경 신청 게시판
     const querySnapshot = await db.collection('web_request').get();
 
     const documents = querySnapshot.docs.map(doc => ({
@@ -214,7 +214,7 @@ router.get('/request_list', async function(req, res, next) {
     res.render('request_list', {result, currentpage});
 });
 
-router.get('/request_list_detail', async function(req, res, next) {
+router.get('/request_list_detail', async function(req, res, next) {//매장정보 변경 신청 상세 정보
 id = req.query.id;
 title = req.query.title;
 content = req.query.content;
@@ -222,7 +222,7 @@ content = req.query.content;
 res.render('request_list_detail', {title, content, id});
 });
 
-router.get("/information_edit", async(req, res) => {
+router.get("/information_edit", async(req, res) => {//
     id = req.query.id;
     //const querySnapshot = await db.collection('web_anncmnt').doc(id).get();
 
