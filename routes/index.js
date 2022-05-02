@@ -2,16 +2,86 @@ const{ Router } = require('express');
 const {db} = require('../firebase');
 const tm1 = require('../lib/date_time');
 const emailsend = require("../lib/emailsend");
+const ctrl = require('./login');
+var passport = require('passport');
+var auth = require('../lib/auth');
+var msg = require ('dialog')
 
 const router = Router();
 
 
-/* GET home page. */
-router.get('/', function(req, res, next) {//HOME
-    res.render('index');
+router.get('/', function (req, res, next) { //웹서버가 작동하면 /list를 보여줘라
+    res.redirect('/home'); // /list로 가라
+    console.log("redirect")
+});
+
+router.get('/home', function (req, res, next) { // /home(리스트)
+    var {login, logout, users, admin} = auth.statusUI(req, res);
+    res.render('home', {login, logout, users, admin}); // home.ejs 파일로 가라
+});
+
+router.get('/login', function (req, res, next) { // 로그인
+    res.render('login');
+});
+
+router.post('/login', passport.authenticate('local', {
+    successRedirect: '/home', //로그인 성공시 홈으로 보냄     
+    failureRedirect:'/login' //로그인 실패시 다시 로그인 
+}));
+
+router.get('/logout', function (req, res, nex){ //로그아웃
+    req.logout();
+    req.session.destroy(function(){
+        res.redirect('/home');
+    });
+});
+
+router.get('/join', function (req, res, next) { // 회원가입
+    res.render('join');
+});
+
+router.post('/join_save', async function (req, res, next) {
+
+    const {
+        ID,
+        Password,
+        Password_check,
+        firstEmail,
+        lastEmail,
+        store_name,
+        store_address,
+        store_number,
+        main_number,
+        store_pice,
+        store_picture
+    } = req.body
+
+        await db
+        .collection('USER')
+        .add({
+            ID: ID,
+            Password: Password,
+            Email: firstEmail + "@" + lastEmail,
+            store_name: store_name,
+            store_address: store_address,
+            store_number: store_number,
+            main_number: main_number,
+            store_pice: store_pice,
+            store_picture: store_picture
+        })
+
+    res.send(
+        "<script>alert('회원가입 신청 완료되었습니다.!! 승인 완료 시 해당 이메일로 승인 메일이 발송됩니다.');location.href='/login';</" +
+        "script>"
+    );
+})
+
+router.get('/find_account', function (req, res, next) { // 아이디/비밀번호 찾기
+    res.render('find_account');
 });
 
 router.get('/announcement', async function(req, res, next) {//공지사항 게시판
+   
         const querySnapshot = await db.collection('web_anncmnt').get();
 
         const documents = querySnapshot.docs.map(doc => ({
@@ -21,12 +91,9 @@ router.get('/announcement', async function(req, res, next) {//공지사항 게�
         }))
         result = documents.sort((a, b) => a.date.toLowerCase() > b.date.toLowerCase() ? -1 : 1);
         currentpage = req.query.currentpage;
-        console.log(documents);
-        console.log(typeof(documents));
-        console.log(documents[0].title);
-        console.log(currentpage);
 
         res.render('announcement', {result, currentpage});
+    
 });
 
 router.get('/announcement_detail', async function(req, res, next) {//공지사항 상세
@@ -191,8 +258,13 @@ router.post('/new-information_change', async (req, res) => {//매장정보 변�
 })
 
 router.get('/information_change', async function(req, res, next) {//매장정보 변경 신청 폼으로 이동
-
+    var validation = auth.validation(req, res);
+    if (validation == true){
     res.render('information_change');
+} else {
+    msg.info("회원가입/로그인 후 이용하세요");
+     res.redirect('/home'); 
+}
 });
 
 router.get('/request_list', async function(req, res, next) {//매장정보 변경 신청 게시판

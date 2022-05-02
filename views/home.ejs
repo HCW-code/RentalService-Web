@@ -76,10 +76,12 @@
                             <div class="col-md-6">
                                 <div class="navbar-socail text-right sm-text-center">
                                     <ul class="list-inline">
-                                        <li><a href="announcement.html">공지사항</a></a></li> <!--/bbs/Announcement-->
-                                        <li><a href="#">고객센터</a></a></li>  <!--/bbs/ServiceCenter-->
-                                        <li><a href="#">로그인</a></a></li> <!--/bbs/Login-->
-                                        <li><a href="#">회원가입</a></a></li> <!--/bbs/Join-->
+                                        <li><a href="announcement?currentpage=1">공지사항</a></a></li> <!--/Announcement-->
+                                        <li><a href="#">고객센터</a></a></li>  <!--/ServiceCenter-->
+                                        <li style="display: <%=login%>"><a href="/login">로그인</a></a></li> <!--/Login-->
+                                        <li style="display: <%=login%>"><a href="/join">회원가입</a></a></li> <!--/Join-->
+                                        <li style="display: <%=logout%>"><a href="/logout">로그아웃</a></a></li> <!--/Login-->
+                                        <li style="display: <%=logout%>"><a href="#"><%=users%>님 마이페이지</a></a></li> <!--/Join-->
                                     </ul>
                                 </div>
                             </div>
@@ -123,10 +125,12 @@
                     <!-- navbar menu -->
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav navbar-right">
-                            <li><a href="index.html">Home</a></li>                    
+                            <li style="display: <%=admin%>"><a href="request_list?currentpage=1">매장변경 신청서 목록</a></li>
+                            <li style="display: <%=admin%>"><a href="register_list?currentpage=1">회원가입 승인</a></li>
+                            <li><a href="/">Home</a></li>                    
                             <li><a href="#features">스키이야기</a></li>
                             <li><a href="#business">광고신청</a></li>
-                            <li><a href="information_change.html">매장정보 변경 신청</a></li>
+                            <li><a href="information_change">매장정보 변경 신청</a></li>
                             <li><a href="#test">이용가이드</a></li>
                             <li><a href="#contact">검색</a></li>
                         </ul>
