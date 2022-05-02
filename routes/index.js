@@ -67,7 +67,7 @@ router.get('/new_anncmnt', async function(req, res, next) {//공지사항 작성
 
 router.get("/delete-anncmnt/:id", async(req, res) => {//공지사항 삭제
     await db.collection('web_anncmnt').doc(req.params.id).delete()
-        
+    var i = 0;
     res.redirect('/announcement?currentpage=1')
 });
 
