@@ -203,7 +203,7 @@ router.get("/user-deny", async(req, res) => {//회원가입 거부
     res.redirect('/register_list?currentpage=1')
 });
 
-router.get("/user-allow", async(req, res) => {//회원가입 승인
+router.get("/user-allow", async(req, res) => {//회원가입 승인 후 가격 수정 칸으로 이동
     id = req.query.id;
 
     ID = req.query.ID;
@@ -212,23 +212,15 @@ router.get("/user-allow", async(req, res) => {//회원가입 승인
     store_picture = req.query.store_picture;
     store_price = req.query.store_price;
     store_name = req.query.store_name;
-    console.log(req.query.store_name);
     store_address = req.query.store_address;
     store_number = req.query.store_number;
     main_number = req.query.main_number;
     Email = req.query.Email;
-    console.log(Name)
-
-    console.log(id);
-
     
-    
-
     currentpage =1;
     emailsend.sendmail(allow = 1, toEmail = Email).catch(console.error);
 
-    console.log("234141111111111111111111111111");
-    await db.collection('USER_allow').add({
+    await db.collection('USER_allow').add({//생성
         ID: ID,
         Password: Password,
         Name: Name,
@@ -240,10 +232,27 @@ router.get("/user-allow", async(req, res) => {//회원가입 승인
         main_number: main_number,
         Email: Email
     })
+   await db.collection('USER').doc(id).delete()//삭제
 
-    await db.collection('USER').doc(id).delete()
-   
-    res.redirect('register_list?currentpage=1')
+
+    var delete_id = "from_userallow";
+    var id;
+    var send=[];
+
+    var dbdata = await db.collection('USER_allow').where("ID", "==", ID)//업데이트를 위해 불러오기
+    .get()
+    .then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+            id = doc.id,
+            userdata = doc.data()
+        });
+    })
+    .catch((error) => {
+        console.log("Error getting documents: ", error);
+    });
+
+    send[0] = userdata;
+    res.render('information_edit', {send, id, delete_id});
 });
 
 router.post('/new-information_change/:users', async (req, res) => {//매장정보 변경 신청서 저장
@@ -327,6 +336,7 @@ router.get("/information_change-deny", async(req, res) => {//정보변경 거부
     .catch((error) => {
         console.log("Error getting documents: ", error);
     });
+    console.log(userdata.Email+"===========================================================")
     await db.collection('web_request').doc(id).delete()
     emailsend.sendmail(allow = 2, toEmail = userdata.Email).catch(console.error);
 
@@ -364,11 +374,14 @@ router.post('/information_update', async(req, res) => {//매장정보 수정후 
     console.log(delete_id)
 
     await db.collection('USER_allow').doc(id).update(req.body)
-    await db.collection('web_request').doc(delete_id).delete()
 
-    emailsend.sendmail(allow = 3, toEmail = req.body.Email).catch(console.error);
+    if(delete_id != "from_userallow"){
+        await db.collection('web_request').doc(delete_id).delete()
+        emailsend.sendmail(allow = 3, toEmail = req.body.Email).catch(console.error);
+    }
 
     res.redirect('/')
 })
+
 
 module.exports = router;
