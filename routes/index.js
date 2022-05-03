@@ -311,7 +311,7 @@ content = req.query.content;
 res.render('request_list_detail', {title, content, id, ID});
 });
 
-router.get("/information_change-deny", async(req, res) => {//정보변경 거부
+router.get("/information_change-deny", async(req, res) => {//정보변경 거부 => 정보변경신청서 drop 후 email 발송
 
     id = req.query.id;
     ID = req.query.ID;
@@ -333,8 +333,8 @@ router.get("/information_change-deny", async(req, res) => {//정보변경 거부
     res.redirect('/request_list?currentpage=1')
 });
 
-router.get("/information_edit", async(req, res) => {//승인 누를시 정보 수정칸 나옴
-    
+router.get("/information_edit", async(req, res) => {//승인 누를시 정보 수정칸 나옴 => 매장정보 수정란
+    delete_id = req.query.delete_id
     ID = req.query.ID;
     var id;
     var send=[];
@@ -351,19 +351,22 @@ router.get("/information_edit", async(req, res) => {//승인 누를시 정보 �
     .catch((error) => {
         console.log("Error getting documents: ", error);
     });
-    //console.log(documents)
-
 
     send[0] = userdata;
-    res.render('information_edit', {send, id});
+    res.render('information_edit', {send, id, delete_id});
 })
 
-router.post('/information_update/:id', async(req, res) => {//공지사항 수정후 저장
-    const {id} = req.params
-
-    //emailsend.sendmail(allow = 3, toEmail = userdata.Email).catch(console.error);
+router.post('/information_update', async(req, res) => {//매장정보 수정후 저장 => 정보변경신청서 drop 후 email 발송
+    const id = req.query.id
+    delete_id = req.query.delete_id
+    
     console.log(id)
+    console.log(delete_id)
+
     await db.collection('USER_allow').doc(id).update(req.body)
+    await db.collection('web_request').doc(delete_id).delete()
+
+    emailsend.sendmail(allow = 3, toEmail = req.body.Email).catch(console.error);
 
     res.redirect('/')
 })
