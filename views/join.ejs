@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content
+        must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="author" content="">
+
+        <!-- Bootstrap CSS -->
+        <link
+            rel="stylesheet"
+            href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+            integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+            crossorigin="anonymous">
+        <link rel="stylesheet" href="assets/css/new_join.css">
+        <title>회원가입 폼</title>
+
+    </head>
+
+    <body
+        cellpadding="0"
+        cellspacing="0"
+        marginleft="0"
+        margintop="0"
+        width="100%"
+        height="100%"
+        align="center">
+
+        <div
+            class="card align-middle"
+            style="width:28rem; height: 100rem; border-radius:20px; margin: 0 auto; margin-top: 0;">
+            <div class="card-title" style="margin-top:30px;">
+                <a href="/home">
+                    <h1 class="card-title text-center" style="color:#5463ec;">스키보드</h1>
+                </a>
+            </div>
+            <div class="card-body">
+                <div class="card-title" style="margin-bottom:20px;">
+                    <h5 class="card-title text-left" style="color:#000205; margin-bottom: 0px;">회원정보를 전부 입력한 후,</h5>
+                    <h5 class="card-title text-left" style="color:#000205;">회원가입을 완료하여 주세요.</h5>
+                </div>
+
+                <form class="form-signin" method="POST" action="/join_save" enctype="multipart/form-data">
+                    <!--ID 입력창-->
+                    <div style="position: relative; width: 100%; margin-top: 10px;">
+                        <div style="width: 100%;">
+                            <label for="ID">아이디</label>
+                            <span class="box int_id">
+                                <input
+                                    type="text"
+                                    id="ID"
+                                    name="ID"
+                                    class="int"
+                                    maxlength="20"
+                                    placeholder="5~20자의 영문, 영문+숫자"
+                                    required="required"
+                                    autofocus="autofocus">
+                            </span>
+                            <span class="error_next_box"></span>
+                        </div>
+                    </div>
+
+                    <!--Password 입력창-->
+                    <div style="position: relative; width: 100%; margin-top: 10px;">
+                        <div style="width: 100%;">
+                            <label for="password">비밀번호</label>
+                            <span class="box int_pass">
+                                <input
+                                    type="password"
+                                    id="password"
+                                    name="Password"
+                                    class="int"
+                                    maxlength="20"
+                                    placeholder="영어,숫자,특수문자 중 2가지 이상 10~20자"
+                                    required="required"
+                                    autofocus="autofocus">
+                                <span id="alertTxt">사용불가</span>
+                                <img
+                                    src="assets/images/m_icon_pass.png"
+                                    id="pswd1_img1"
+                                    class="pswdImg">
+                            </span>
+                            <span class="error_next_box"></span>
+                        </div>
+                    </div>
+
+                    <!--Password 재확인 입력창-->
+                    <div style="position: relative; width: 100%; margin-top: 10px;">
+                        <div style="width: 100%;">
+                            <label for="password_check">비밀번호 재확인</label>
+                            <span class="box int_pass_check">
+                                <input
+                                    type="password"
+                                    id="password_check"
+                                    name="Password_check"
+                                    class="int"
+                                    maxlength="20"
+                                    placeholder="비밀번호 재입력"
+                                    required="required"
+                                    autofocus="autofocus">
+                                <img
+                                    src="assets/images/m_icon_check_disable.png"
+                                    id="pswd2_img1"
+                                    class="pswdImg">
+                            </span>
+                            <span class="error_next_box"></span>
+                        </div>
+                    </div>
+
+                    <!--이름 입력창-->
+                    <div style="position: relative; width: 100%; margin-top: 10px;">
+                        <div style="width: 100%;">
+                            <label for="Name">이름</label>
+                            <span class="box int_name" style="border-radius: 15px;">
+                                <input
+                                    type="text"
+                                    id="name"
+                                    class="int"
+                                    maxlength="20"
+                                    name="Name"
+                                    placeholder="이름"
+                                    required="required"
+                                    autofocus="autofocus">
+                            </span>
+                            <span class="error_next_box"></span>
+                        </div>
+                    </div>
+
+                    <div style="position: relative; width: 100%; margin-top: 10px;">
+                        <label>이메일</label>
+                        <div style="width: 100%;margin-bottom: 10px;">
+                            <div style="float: left; width: 48%;">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name="firstEmail"
+                                    data-testid="firstEmail"
+                                    placeholder="이메일 앞자리">
+                            </div>
+                            <div style="float: left; width: 4%;">
+                                <span class="EmailInput__Et-eofdb4-1 dfrRCx">@</span>
+                            </div>
+                            <div style="float: left; width: 48%;">
+                                <input
+                                    type="text"
+                                    class="form-control"
+                                    name="lastEmail"
+                                    data-testid="lastEmail"
+                                    placeholder="이메일 뒷자리">
+                            </div>
+                        </div>
+                        <div style="width: 100%; margin-top: 50px;">
+                            <select
+                                class="form-control"
+                                name="email_sel"
+                                style="width: 100%;"
+                                data-testid="email">
+                                <option value="">직접입력</option>
+                                <option value="naver.com">naver.com</option>
+                                <option value="hanmail.net">hanmail.net</option>
+                                <option value="nate.com">nate.com</option>
+                                <option value="hotmail.com">hotmail.com</option>
+                                <option value="gmail.com">gmail.com</option>
+                            </select>
+                        </div>
+                    </div>
+                    <br>
+                    <div style="margin-top: 30px;">
+                        <h5>우리 가게 정보</h5>
+
+                        <div style="position: relative; width: 100%; margin-top: 10px;">
+                            <label>가게 이름</label>
+                            <span class="box int_store_name" style="border-radius: 15px;">
+                                <input
+                                    type="text"
+                                    name="store_name"
+                                    class="int"
+                                    maxlength="20"
+                                    placeholder="가게 이름"
+                                    required="required"
+                                    autofocus="autofocus">
+                            </span>
+                        </div>
+                        <div style="position: relative; width: 100%; margin-top: 10px;">
+                            <label>가게 주소</label>
+                            <span class="box int_store_adress" style="border-radius: 15px;">
+                                <input
+                                    type="text"
+                                    name="store_address"
+                                    class="int"
+                                    maxlength="40"
+                                    placeholder="가게 주소"
+                                    required="required"
+                                    autofocus="autofocus">
+                            </span>
+                        </div>
+                        <div style="position: relative; width: 100%; margin-top: 10px;">
+                            <label>가게 번호</label>
+                            <span class="box int_store_number" style="border-radius: 15px;">
+                                <input
+                                    type="phnoe"
+                                    name="store_number"
+                                    class="int"
+                                    maxlength="20"
+                                    placeholder="가게 번호"
+                                    required="required"
+                                    autofocus="autofocus">
+                            </span>
+                        </div>
+                        <div style="position: relative; width: 100%; margin-top: 10px;">
+                            <label>사업자 번호</label>
+                            <span class="box int_main_number" style="border-radius: 15px;">
+                                <input
+                                    type="text"
+                                    name="main_number"
+                                    class="int"
+                                    maxlength="20"
+                                    placeholder="사업자 번호"
+                                    required="required"
+                                    autofocus="autofocus">
+                            </span>
+                        </div>
+                        <div style="position: relative; width: 100%; margin-top: 10px;">
+                            <label>가격 정보</label>
+                            <span class="box int_store_price" style="border-radius: 15px;">
+                                <input type="file" name="store_price">
+                            </span>                                                        
+                            <li style="margin-top: 10px;">가격:<input type="text" name="p_info1" placeholder="가격을 입력해주세요" style="margin-left: 10px;"></li>
+                            <li style="margin-top: 10px;">가격:<input type="text" name="p_info2" placeholder="가격을 입력해주세요" style="margin-left: 10px;"></li>
+                            <li style="margin-top: 10px;">가격:<input type="text" name="p_info3" placeholder="가격을 입력해주세요" style="margin-left: 10px;"></li>
+                            <li style="margin-top: 10px;">가격:<input type="text" name="p_info4" placeholder="가격을 입력해주세요" style="margin-left: 10px;"></li>
+                            <li style="margin-top: 10px;">가격:<input type="text" name="p_info5" placeholder="가격을 입력해주세요" style="margin-left: 10px;"></li>
+                            <li style="margin-top: 10px;">가격:<input type="text" name="p_info6" placeholder="가격을 입력해주세요" style="margin-left: 10px;"></li>                                
+                        </div>                        
+                        <div style="position: relative; width: 100%; margin-top: 10px;">
+                            <label>대표 사진</label>
+                            <span class="box int_store_picture" style="border-radius: 15px;">
+                                <input type="file" name="store_picture">
+                            </span>
+                        </div>
+                        <BR>
+                        <button
+                            style="float: left; width: 150px; "
+                            id="Yes_join_btn"
+                            class="btn btn-lg btn-primary btn-block"
+                            type="submit">회원가입 신청</button>                                                
+                    </div>
+                </form>
+                <button
+                    style="float: right; width: 150px;"
+                    id="No_join_btn"
+                    class="btn btn-lg btn-primary btn-block"
+                    type="submit"
+                    onclick="location.href='/home' ">취 소</button>
+            </div>
+        </div>
+
+        <div class="modal"></div>
+        <!-- Optional JavaScript -->
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script
+            src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+        <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+        <script src="/views/join_event.js"></script>
+    </body>
+</html>

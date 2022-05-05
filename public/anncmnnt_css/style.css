@@ -1,0 +1,105 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 10px;
+}
+
+ul, li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.board_wrap {
+    width: 1000px;
+    margin: 100px auto;
+}
+
+.board_title {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.board_title strong {
+    font-size: 3rem;
+}
+
+.bt_wrap {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0;
+}
+
+.bt_wrap button, 
+.bt_wrap a {
+    display: inline-block;
+    min-width: 80px;
+    margin-left: 10px;
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 2px;
+    font-size: 1.4rem;
+}
+
+.bt_wrap button:first-child {
+    margin-left: 0;
+}
+
+.bt_wrap button.on {
+    background: #000;
+    color: #fff;
+}
+
+
+
+.board_write {
+    border-top: 2px solid #000;
+}
+
+.board_write .title{
+    margin-top: 20px;
+}
+
+.board_write .title,
+.board_write .cont {
+    padding: 15px;
+}
+
+
+.board_write .title dl, .cont dl {
+    font-size: 0;
+}
+
+
+.board_write .title dt,
+.board_write .title dd,
+.board_write .cont dt,
+.board_write .cont dd {
+    display: inline-block;
+    vertical-align: middle;
+    font-size: 1.4rem;
+}
+
+.board_write .title dt,
+.board_write .cont dt {
+    width: 100px;
+}
+
+.board_write .title dd {
+    width: calc(100% - 100px);
+}
+
+.board_write .title input[type="text"]{
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.board_write .title input[type="text"] {
+    width: 83%;
+}
