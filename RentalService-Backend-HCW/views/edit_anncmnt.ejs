@@ -1,0 +1,328 @@
+<!doctype html>
+<html class="no-js" lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Made One</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" type="image/png" href="favicon.ico">
+
+        <link rel="stylesheet" href="/anncmnnt_css/style.css">
+
+        <!--Google Font link-->
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+
+        <link rel="stylesheet" href="/assets/css/slick/slick.css"> 
+        <link rel="stylesheet" href="/assets/css/slick/slick-theme.css">
+        <link rel="stylesheet" href="/assets/css/animate.css">
+        <link rel="stylesheet" href="/assets/css/iconfont.css">
+        <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/assets/css/bootstrap.css">
+        <link rel="stylesheet" href="/assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="/assets/css/bootsnav.css">
+
+        <!-- xsslider slider css -->
+
+
+        <!--<link rel="stylesheet" href="assets/css/xsslider.css">-->
+
+
+
+
+        <!--For Plugins external css-->
+        <!--<link rel="stylesheet" href="assets/css/plugins.css" />-->
+
+        <!--Theme custom css -->
+        <link rel="stylesheet" href="/assets/css/style.css">
+        <!--<link rel="stylesheet" href="assets/css/colors/maron.css">-->
+
+        <!--Theme Responsive css-->
+        <link rel="stylesheet" href="/assets/css/responsive.css" />
+
+        <script src="/assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    </head>
+
+    <body data-spy="scroll" data-target=".navbar-collapse">
+
+
+        <!-- Preloader -->
+        <div id="loading">
+            <div id="loading-center">
+                <div id="loading-center-absolute">
+                    <div class="object" id="object_one"></div>
+                    <div class="object" id="object_two"></div>
+                    <div class="object" id="object_three"></div>
+                    <div class="object" id="object_four"></div>
+                </div>
+            </div>
+        </div><!--End off Preloader -->
+
+
+        <div class="culmn">
+            <!--Home page style-->
+
+
+            <nav class="navbar navbar-default bootsnav navbar-fixed">
+                <div class="navbar-top bg-grey fix">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="navbar-callus text-left sm-text-center">
+                                    <ul class="list-inline">
+                                        <li><a href=""><i class="fa fa-phone"></i> Call us: 1234 5678 90</a></li>
+                                        <li><a href=""><i class="fa fa-envelope-o"></i> Contact us: your@email.com</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="navbar-socail text-right sm-text-center">
+                                    <ul class="list-inline">
+                                        <li><a href="announcement?currentpage=1">공지사항</a></a></li> <!--/Announcement-->
+                                        <li><a href="#">고객센터</a></a></li>  <!--/ServiceCenter-->
+                                        <li style="display: <%=login%>"><a href="/login">로그인</a></a></li> <!--/Login-->
+                                        <li style="display: <%=login%>"><a href="/join">회원가입</a></a></li> <!--/Join-->
+                                        <li style="display: <%=logout%>"><a href="/logout">로그아웃</a></a></li> <!--/Login-->
+                                        <li style="display: <%=logout%>"><a href="#"><%=users%>님 마이페이지</a></a></li> <!--/Join-->
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Start Top Search -->
+                <div class="top-search">
+                    <div class="container">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                            <input type="text" class="form-control" placeholder="Search">
+                            <span class="input-group-addon close-search"><i class="fa fa-times"></i></span>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Top Search -->
+
+
+                <div class="container"> 
+                    <div class="attr-nav">
+                        <ul>
+                            <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
+                        </ul>
+                    </div> 
+
+                    <!-- Start Header Navigation -->
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-menu">
+                            <i class="fa fa-bars"></i>
+                        </button>
+                        <a class="navbar-brand" href="/">
+                            <img src="/assets/images/logo.png" class="logo" alt="">
+                            <!--<img src="assets/images/footer-logo.png" class="logo logo-scrolled" alt="">-->
+                        </a>
+
+                    </div>
+                    <!-- End Header Navigation -->
+
+                    <!-- navbar menu -->
+                    <div class="collapse navbar-collapse" id="navbar-menu">
+                        <ul class="nav navbar-nav navbar-right">
+                            <li style="display: <%=admin[0]%>"><a href=<%=admin[1]%>>매장변경 신청서 목록</a></li>
+                            <li style="display: <%=admin[0]%>"><a href=<%=admin[2]%>>회원가입 승인</a></li>
+                            <li><a href="/">Home</a></li>                    
+                            <li><a href="#features">스키이야기</a></li>
+                            <li><a href="#business">광고신청</a></li>
+                            <li><a href="information_change">매장정보 변경 신청</a></li>
+                            <li><a href="#test">이용가이드</a></li>
+                            <li><a href="#contact">검색</a></li>
+                        </ul>
+                    </div><!-- /.navbar-collapse -->
+                </div> 
+
+            </nav>
+            <br>
+            <br>
+            <br>
+            <br>
+          
+                        
+            <!-- 여기 -->
+            <div class="board_wrap">
+                <div class="board_title">
+                    <strong>공지사항</strong>                    
+                </div>                
+                <form action="/update-anncmnt/<%=id%>" method="post" class="board_write_wrap">
+                    <div class="board_write">
+                        <div class="title">
+                            <dl>
+                                <dt>제목</dt>
+                                <dd><input name="title" type="text" placeholder="제목 입력" value="<%=title%>"></dd>
+                            </dl>
+                        </div>
+                        <div class="cont">
+                            <dt>내용</dt>
+                            <dd><textarea name="cont" placeholder="내용 입력" rows="13" cols="70"><%=content%></textarea></dd>
+                        </div>
+                    </div>
+                    <div class="bt_wrap">                        
+                        <button class="on">등록</button>
+                        <a href="#">취소</a>                        
+                    </div>
+                </form>
+            </div>
+
+            <hr/>
+
+            <!-- 여기 -->
+
+            
+
+
+            <footer id="contact" >
+                <div class="container">
+                    <div class="row">
+                        <div class="widget_area">
+                            <div class="col-md-3">
+                                <div class="widget_item widget_about">
+                                    <h5 class="text-white">About Us</h5>
+                                    <p class="m-top-20">Lorem ipsum dolor sit amet consec tetur adipiscing elit 
+                                        nulla aliquet pretium nisi in cursus 
+                                        maecenas nec eleifen.</p>
+                                    <div class="widget_ab_item m-top-30">
+                                        <div class="item_icon"><i class="fa fa-location-arrow"></i></div>
+                                        <div class="widget_ab_item_text">
+                                            <h6 class="text-white">Location</h6>
+                                            <p>
+                                                123 suscipit ipsum nam auctor
+                                                mauris dui, ac sollicitudin mauris,
+                                                Bandung</p>
+                                        </div>
+                                    </div>
+                                    <div class="widget_ab_item m-top-30">
+                                        <div class="item_icon"><i class="fa fa-phone"></i></div>
+                                        <div class="widget_ab_item_text">
+                                            <h6 class="text-white">Phone :</h6>
+                                            <p>+1 2345 6789</p>
+                                        </div>
+                                    </div>
+                                    <div class="widget_ab_item m-top-30">
+                                        <div class="item_icon"><i class="fa fa-envelope-o"></i></div>
+                                        <div class="widget_ab_item_text">
+                                            <h6 class="text-white">Email Address :</h6>
+                                            <p>youremail@mail.com</p>
+                                        </div>
+                                    </div>
+                                </div><!-- End off widget item -->
+                            </div><!-- End off col-md-3 -->
+
+                            <div class="col-md-3">
+                                <div class="widget_item widget_latest sm-m-top-50">
+                                    <h5 class="text-white">Latest News</h5>
+                                    <div class="widget_latst_item m-top-30">
+                                        <div class="item_icon"><img src="/assets/images/ltst-img-1.jpg" alt="" /></div>
+                                        <div class="widget_latst_item_text">
+                                            <p>Lorem ipsum dolor sit amet, consectetur</p>
+                                            <a href="">21<sup>th</sup> July 2016</a>
+                                        </div>
+                                    </div>
+                                    <div class="widget_latst_item m-top-30">
+                                        <div class="item_icon"><img src="/assets/images/ltst-img-2.jpg" alt="" /></div>
+                                        <div class="widget_latst_item_text">
+                                            <p>Lorem ipsum dolor sit amet, consectetur</p>
+                                            <a href="">21<sup>th</sup> July 2016</a>
+                                        </div>
+                                    </div>
+                                    <div class="widget_latst_item m-top-30">
+                                        <div class="item_icon"><img src="/assets/images/ltst-img-3.jpg" alt="" /></div>
+                                        <div class="widget_latst_item_text">
+                                            <p>Lorem ipsum dolor sit amet, consectetur</p>
+                                            <a href="">21<sup>th</sup> July 2016</a>
+                                        </div>
+                                    </div>
+                                </div><!-- End off widget item -->
+                            </div><!-- End off col-md-3 -->
+
+                            <div class="col-md-3">
+                                <div class="widget_item widget_service sm-m-top-50">
+                                    <h5 class="text-white">Latest News</h5>
+                                    <ul class="m-top-20">
+                                        <li class="m-top-20"><a href=""><i class="fa fa-angle-right"></i> Web Design</a></li>
+                                        <li class="m-top-20"><a href=""><i class="fa fa-angle-right"></i> User Interface Design</a></li>
+                                        <li class="m-top-20"><a href=""><i class="fa fa-angle-right"></i> E- Commerce</a></li>
+                                        <li class="m-top-20"><a href=""><i class="fa fa-angle-right"></i> Web Hosting</a></li>
+                                        <li class="m-top-20"><a href=""><i class="fa fa-angle-right"></i> Themes</a></li>
+                                        <li class="m-top-20"><a href=""><i class="fa fa-angle-right"></i> Support Forums</a></li>
+                                    </ul>
+                                </div><!-- End off widget item -->
+                            </div><!-- End off col-md-3 -->
+
+                            <div class="col-md-3">
+                                <div class="widget_item widget_newsletter sm-m-top-50">
+                                    <h5 class="text-white">Newsletter</h5>
+                                    <form class="form-inline m-top-30">
+                                        <div class="form-group">
+                                            <input type="email" class="form-control" placeholder="Enter you Email">
+                                            <button type="submit" class="btn text-center"><i class="fa fa-arrow-right"></i></button>
+                                        </div>
+
+                                    </form>
+                                    <div class="widget_brand m-top-40">
+                                        <a href="" class="text-uppercase">Your Logo</a>
+                                        <p>Lorem ipsum dolor sit amet consec tetur 
+                                            adipiscing elit nulla aliquet pretium nisi in</p>
+                                    </div>
+                                    <ul class="list-inline m-top-20">
+                                        <li>-  <a href=""><i class="fa fa-facebook"></i></a></li>
+                                        <li><a href=""><i class="fa fa-twitter"></i></a></li>
+                                        <li><a href=""><i class="fa fa-linkedin"></i></a></li>
+                                        <li><a href=""><i class="fa fa-google-plus"></i></a></li>
+                                        <li><a href=""><i class="fa fa-behance"></i></a></li>
+                                        <li><a href=""><i class="fa fa-dribbble"></i></a>  - </li>
+                                    </ul>
+
+                                </div><!-- End off widget item -->
+                            </div><!-- End off col-md-3 -->
+                        </div>
+                    </div>
+                </div>
+                <div class="main_footer fix bg-mega text-center p-top-40 p-bottom-30 m-top-80">
+                    <div class="col-md-12">
+                        <p class="wow fadeInRight" data-wow-duration="1s">
+                            Made with 
+                            <i class="fa fa-heart"></i>
+                            by 
+                            <a target="_blank" href="http://bootstrapthemes.co">Bootstrap Themes</a> 
+                            2016. All Rights Reserved
+                        </p>
+                    </div>
+                </div>
+            </footer>
+
+
+
+
+        </div>
+
+        <!-- JS includes -->
+
+        <script src="/assets/js/vendor/jquery-1.11.2.min.js"></script>
+        <script src="/assets/js/vendor/bootstrap.min.js"></script>
+
+        <script src="/assets/js/owl.carousel.min.js"></script>
+        <script src="/assets/js/jquery.magnific-popup.js"></script>
+        <script src="/assets/js/jquery.easing.1.3.js"></script>
+        <script src="/assets/css/slick/slick.js"></script>
+        <script src="/assets/css/slick/slick.min.js"></script>
+        <script src="/assets/js/jquery.collapse.js"></script>
+        <script src="/assets/js/bootsnav.js"></script>
+
+
+
+        <script src="/assets/js/plugins.js"></script>
+        <script src="/assets/js/main.js"></script>
+
+    </body>
+</html>
+
+<!— https://www.youtube.com/watch?v=IOFpNI_TLqM —>
+<!— https://www.youtube.com/watch?v=SxEVnwHsrDg —>

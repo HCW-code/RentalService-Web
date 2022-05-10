@@ -1,0 +1,38 @@
+<!doctype html>
+<script>
+    user_auth_number = prompt('인증번호 입력', '')
+</script>
+
+</html>
+
+
+<script>
+    function chkform(obj){
+    
+     var outdata = prompt("무엇인가?", "여따쓰시오 냉큼쓰시오");
+     if (outdata != "정답")  return false;
+     return true;
+    }
+    </script>
+    <!--<form name="formname" action="action.php"  method="post" onsubmit="return chkform(this)">
+    <input type="submit" value="확인>
+    </form>-->
+
+<script>
+    function sendPost(url, params) {
+        var form = document.createElement('form');
+        form.setAttribute('method','post');
+        form.setAttribute('action',url);
+        document.charset = "utf-8";
+        for (var key in arams) {
+            var hiddenField = document.createElement('input');
+            hiddenField.setAttribute('type','hiddeen');
+            hiddenField.setAttribute('name',key);
+            hiddenField.setAttribute('value',params[key]);
+            form.appendChild(hiddenField);
+        }
+        document.body.appendChild(form);
+        form.submit();
+    }
+    sendPost('/js',{Name : name});
+</script>
