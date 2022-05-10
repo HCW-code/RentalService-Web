@@ -231,10 +231,12 @@ router.get("/user-deny", async(req, res) => {//회원가입 거부
 
 router.get("/user-allow", async(req, res) => {//회원가입 승인 후 가격 수정 칸으로 이동
     var querySnapshot = await db.collection('USER').doc(req.query.id).get()
-    var result = querySnapshot.data()
+    var result = querySnapshot.data()    
     emailsend.sendmail(allow = 1, toEmail = result.Email).catch(console.error);
 
-    await db.collection('USER_allow').add(result);
+    querySnapshot = await db.collection('USER_allow').get()    
+    doc_id =  await (await db.collection('USER_allow').add(result)).id;
+    await db.collection('USER_allow').doc(doc_id).update({store_id: querySnapshot.docs.length})
     await db.collection('USER').doc(req.query.id).delete()
 
     res.redirect('/register_list?currentpage=1')
