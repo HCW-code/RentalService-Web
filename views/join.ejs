@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content
+        must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/css/new_join.css">
+    <title>회원가입 폼</title>
+
+</head>
+
+<body cellpadding="0" cellspacing="0" marginleft="0" margintop="0" width="100%" height="100%" align="center">
+
+    <div class="card align-middle"
+        style="width:28rem; height: 105rem; border-radius:20px; margin: 0 auto; margin-top: 0;">
+        <div class="card-title" style="margin-top:30px;">
+            <a href="/home">
+                <h1 class="card-title text-center" style="color:#5463ec;">스키보드</h1>
+            </a>
+        </div>
+        <div class="card-body">
+            <div class="card-title" style="margin-bottom:20px;">
+                <h5 class="card-title text-left" style="color:#000205; margin-bottom: 0px;">회원정보를 전부 입력한 후,</h5>
+                <h5 class="card-title text-left" style="color:#000205;">회원가입을 완료하여 주세요.</h5>
+            </div>
+            <form class="form-signin" method="POST" onsubmit="return checkAll()" action="/join_save">
+                <!--ID 입력창-->
+                <div style="position: relative; width: 100%; margin-top: 10px;">
+                    <div style="width: 100%;">
+                        <label for="ID">아이디</label>
+                        <span class="box int_id">
+                            <input type="text" id="ID" name="ID" class="int" maxlength="20"
+                                placeholder="5~20자의 영문, 영문+숫자" required="required" autofocus="autofocus">
+                        </span>
+                        <span class="error_next_box"></span>
+                    </div>
+                </div>
+                <!--Password 입력창-->
+                <div style="position: relative; width: 100%; margin-top: 10px;">
+                    <div style="width: 100%;">
+                        <label for="password">비밀번호</label>
+                        <span class="box int_pass">
+                            <input type="password" id="password" name="Password" class="int" maxlength="20"
+                                placeholder="영어,숫자,특수문자 중 2가지 이상 10~20자" required="required" autofocus="autofocus">
+                            <span id="alertTxt">사용불가</span>
+                            <img src="assets/images/m_icon_pass.png" id="pswd1_img1" class="pswdImg">
+                        </span>
+                        <span class="error_next_box"></span>
+                    </div>
+                </div>
+
+                <!--Password 재확인 입력창-->
+                <div style="position: relative; width: 100%; margin-top: 10px;">
+                    <div style="width: 100%;">
+                        <label for="password_check">비밀번호 재확인</label>
+                        <span class="box int_pass_check">
+                            <input type="password" id="password_check" name="Password_check" class="int" maxlength="20"
+                                placeholder="비밀번호 재입력" required="required" autofocus="autofocus">
+                            <img src="assets/images/m_icon_check_disable.png" id="pswd2_img1" class="pswdImg">
+                        </span>
+                        <span class="error_next_box"></span>
+                    </div>
+                </div>
+
+                <!--이름 입력창-->
+                <div style="position: relative; width: 100%; margin-top: 10px;">
+                    <div style="width: 100%;">
+                        <label for="Name">이름</label>
+                        <span class="box int_name" style="border-radius: 15px;">
+                            <input type="text" id="name" class="int" maxlength="20" name="Name" placeholder="이름"
+                                required="required" autofocus="autofocus">
+                        </span>
+                        <span class="error_next_box"></span>
+                    </div>
+                </div>
+
+                <div style="position: relative; width: 100%; margin-top: 10px;">
+                    <label>이메일</label>
+                    <div style="width: 100%;margin-bottom: 10px;">
+                        <div style="float: left; width: 48%;">
+                            <input type="text" class="form-control" name="firstEmail" data-testid="firstEmail"
+                                placeholder="이메일 앞자리">
+                        </div>
+                        <div style="float: left; width: 4%;">
+                            <span class="EmailInput__Et-eofdb4-1 dfrRCx">@</span>
+                        </div>
+                        <div style="float: left; width: 48%;">
+                            <input type="text" class="form-control" name="lastEmail" data-testid="lastEmail"
+                                placeholder="이메일 뒷자리">
+                        </div>
+                    </div>
+                    <div style="width: 100%; margin-top: 50px;">
+                        <select class="form-control" name="email_sel" style="width: 100%;" data-testid="email">
+                            <option value="">직접입력</option>
+                            <option value="naver.com">naver.com</option>
+                            <option value="hanmail.net">hanmail.net</option>
+                            <option value="nate.com">nate.com</option>
+                            <option value="hotmail.com">hotmail.com</option>
+                            <option value="gmail.com">gmail.com</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <div style="margin-top: 30px;">
+                    <h5>우리 가게 정보</h5>
+
+                    <div style="position: relative; width: 100%; margin-top: 10px;">
+                        <label>가게 이름</label>
+                        <span class="box int_store_name" style="border-radius: 15px;">
+                            <input type="text" name="store_name" class="int" maxlength="20" placeholder="가게 이름"
+                                required="required" autofocus="autofocus">
+                        </span>
+                    </div>
+                    <div style="position: relative; width: 100%; margin-top: 10px;">
+                        <label>가게 주소</label>
+                        <span class="box int_store_adress" style="border-radius: 15px;">
+                            <input type="text" name="store_address" class="int" maxlength="40" placeholder="가게 주소"
+                                required="required" autofocus="autofocus">
+                        </span>
+                    </div>
+                    <div style="position: relative; width: 100%; margin-top: 10px;">
+                        <label>가게 번호</label>
+                        <span class="box int_store_number" style="border-radius: 15px;">
+                            <input type="phnoe" name="store_number" class="int" maxlength="20" placeholder="가게 번호"
+                                required="required" autofocus="autofocus">
+                        </span>
+                    </div>
+                    <div style="position: relative; width: 100%; margin-top: 10px;">
+                        <label>사업자 번호</label>
+                        <span class="box int_main_number" style="border-radius: 15px;">
+                            <input type="text" name="main_number" class="int" maxlength="20" placeholder="사업자 번호"
+                                required="required" autofocus="autofocus">
+                        </span>
+                    </div>
+                    <div style="position: relative; width: 100%; margin-top: 10px;">
+                        <label>가격 정보</label>
+                        <span class="box int_store_price" style="border-radius: 15px;">
+                            <input type="file" name="store_price" required>
+                        </span>
+                        <li style="margin-top: 10px;">4시간 의류:<input type="number" name="p_info1" placeholder="가격을 입력해주세요" style="margin-left: 10px;" required></li>
+                        <li style="margin-top: 10px;">4시간 장비:<input type="number" name="p_info2" placeholder="가격을 입력해주세요" style="margin-left: 10px;" required></li>
+                        <li style="margin-top: 10px;">4시간 의류 + 장비:<input type="number" name="p_info3" placeholder="가격을 입력해주세요" style="margin-left: 10px;" required></li>
+                        <li style="margin-top: 10px;">8시간 의류:<input type="number" name="p_info4" placeholder="가격을 입력해주세요" style="margin-left: 10px;" required></li>
+                        <li style="margin-top: 10px;">8시간 장비:<input type="number" name="p_info5" placeholder="가격을 입력해주세요" style="margin-left: 10px;" required></li>
+                        <li style="margin-top: 10px;">8시간 의류 + 정비:<input type="number" name="p_info6" placeholder="가격을 입력해주세요" style="margin-left: 10px;" required></li>
+                    </div>
+                    <div style="position: relative; width: 100%; margin-top: 10px;">
+                        <label>대표 사진</label>
+                        <span class="box int_store_picture" style="border-radius: 15px;">
+                            <input type="file" name="store_picture" required>
+                        </span>
+                    </div>
+                    <BR>
+                    <button style="float: left; width: 150px; " id="Yes_join_btn"
+                        class="btn btn-lg btn-primary btn-block" type="submit">회원가입 신청</button>
+                </div>
+            </form>
+            <button style="float: right; width: 150px;" id="No_join_btn" class="btn btn-lg btn-primary btn-block"
+                type="submit" onclick="location.href='/home' ">취 소</button>
+        </div>
+    </div>
+
+    <div class="modal"></div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script>
+        /*변수 선언*/
+        var id = document.querySelector('#ID');
+
+        var pw1 = document.querySelector('#password');
+        var pwMsg = document.querySelector('#alertTxt');
+        var pwImg1 = document.querySelector('#pswd1_img1');
+
+        var pw2 = document.querySelector('#password_check');
+        var pwImg2 = document.querySelector('#pswd2_img1');
+        var pwMsgArea = document.querySelector('.int_pass');
+
+        var userName = document.querySelector('#name');
+
+        var email = document.querySelector('#email');
+
+        var mobile = document.querySelector('#mobile');
+
+        var error = document.querySelectorAll('.error_next_box');
+
+        /*이벤트 핸들러 연결*/
+
+
+        id.addEventListener("focusout", checkId);
+        pw1.addEventListener("focusout", checkPw);
+        pw2.addEventListener("focusout", comparePw);
+        userName.addEventListener("focusout", checkName);
+
+        //dd.addEventListener("focusout", isBirthCompleted);
+        /*gender.addEventListener("focusout", function() {
+            if(gender.value === "성별") {
+                error[5].style.display = "block";
+            } else {
+                error[5].style.display = "none";
+            }
+        })*/
+        //email.addEventListener("focusout", isEmailCorrect);
+        //mobile.addEventListener("focusout", checkPhoneNum);
+
+
+
+
+
+        /*콜백 함수*/
+
+        function checkId() {
+            var idPattern = /[a-zA-Z0-9_-]{5,20}/;
+            var value1;
+            if (id.value === "") {
+                error[0].innerHTML = "필수 정보입니다.";
+                error[0].style.display = "block";
+                return false;
+            } else if (!idPattern.test(id.value)) {
+                error[0].innerHTML = "5~20자의 영문 소문자, 숫자와 특수기호(_),(-)만 사용 가능합니다.";
+                error[0].style.color = "red";
+                error[0].style.display = "block";
+                return false;
+            } else {
+                $.ajax({
+                    url: "/check_overlap",
+                    type: "POST",
+                    data: {
+                        "id": id.value
+                    },
+                    success: function (data) {
+                        if (!data) {
+                            error[0].innerHTML = "이미 존재하는 ID입니다.";
+                            error[0].style.color = "red";
+                            error[0].style.display = "block";
+                            checkId = false;
+                        } else {
+                            error[0].innerHTML = "사용 가능합니다!";
+                            error[0].style.color = "#08A600";
+                            error[0].style.display = "block";
+                            checkId = true;
+                        }
+                    }
+                })
+            }
+        }
+
+        function checkPw() {
+            var pwPattern = /[a-zA-Z0-9~!@#$%^&*()_+|<>?:{}]{8,16}/;
+            if (pw1.value === "") {
+                error[1].innerHTML = "필수 정보입니다.";
+                error[1].style.display = "block";
+                return false;
+            } else if (!pwPattern.test(pw1.value)) {
+                error[1].innerHTML = "8~16자 영문 대 소문자, 숫자, 특수문자를 사용하세요.";
+                error[1].style.color = "red";
+                pwMsg.innerHTML = "사용불가";
+                pwMsgArea.style.paddingRight = "93px";
+                error[1].style.display = "block";
+                pwMsg.style.display = "block";
+                pwMsg.style.color = "red";
+                pwImg1.src = "assets/images/m_icon_not_use.png";
+                return false;
+            } else {
+                error[1].style.display = "none";
+                pwMsg.innerHTML = "안전";
+                pwMsg.style.display = "block";
+                pwMsg.style.color = "#03c75a";
+                pwImg1.src = "assets/images/m_icon_safe.png";
+                return true;
+            }
+        }
+
+        function comparePw() {
+            if (pw2.value === pw1.value && pw2.value != "") {
+                pwImg2.src = "assets/images/m_icon_check_enable.png";
+                error[2].style.display = "none";
+                return true;
+            } else if (pw2.value !== pw1.value) {
+                pwImg2.src = "assets/images/m_icon_check_unenable.png";
+                error[2].innerHTML = "비밀번호가 일치하지 않습니다.";
+                error[2].style.color = "red";
+                error[2].style.display = "block";
+                return false;
+            }
+
+            if (pw2.value === "") {
+                error[2].innerHTML = "필수 정보입니다.";
+                error[2].style.color = "red";
+                error[2].style.display = "block";
+                return false;
+            }
+        }
+
+        function checkName() {
+            var namePattern = /[a-zA-Z가-힣]/;
+            if (userName.value === "") {
+                error[3].innerHTML = "필수 정보입니다.";
+                error[3].style.color = "red";
+                error[3].style.display = "block";
+            } else if (!namePattern.test(userName.value) || userName.value.indexOf(" ") > -1) {
+                error[3].innerHTML = "한글과 영문 대 소문자를 사용하세요. (특수기호, 공백 사용 불가)";
+                error[3].style.color = "red";
+                error[3].style.display = "block";
+            } else {
+                error[3].style.display = "none";
+            }
+        }
+
+
+
+
+        function isEmailCorrect() {
+            var emailPattern = /[a-z0-9]{2,}@[a-z0-9-]{2,}\.[a-z0-9]{2,}/;
+
+            if (email.value === "") {
+                error[6].style.display = "none";
+            } else if (!emailPattern.test(email.value)) {
+                error[6].style.display = "block";
+            } else {
+                error[6].style.display = "none";
+            }
+
+        }
+
+        function checkPhoneNum() {
+            var isPhoneNum = /([01]{2})([01679]{1})([0-9]{3,4})([0-9]{4})/;
+
+            if (mobile.value === "") {
+                error[7].innerHTML = "필수 정보입니다.";
+                error[7].style.display = "block";
+            } else if (!isPhoneNum.test(mobile.value)) {
+                error[7].innerHTML = "형식에 맞지 않는 번호입니다.";
+                error[7].style.display = "block";
+            } else {
+                error[7].style.display = "none";
+            }
+        }
+
+        function checkAll() {
+            $.ajax({
+                url: "/check_all",
+                type: "POST",
+                data: {
+                    "checkID1": checkId,
+                    "checkPW": checkPw,
+                    "comparePW": comparePw
+                },
+
+                success: function (data) {
+                    if (data == "true") {
+                        console.log("성공"+data);
+                        checkAll = true;
+                        console.log("dfasdf2123 "+checkAll);
+                    } else {
+                        console.log("실패"+data);
+                        alert(data);
+                        checkAll = false;
+                    }
+                }
+            })
+        }
+    </script>
+</body>
+
+</html>
