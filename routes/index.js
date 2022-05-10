@@ -84,10 +84,15 @@ router.get('/join', function (req, res, next) { // 회원가입
 router.post('/join_save', upload.fields([{name:'store_price', maxCount: 1}, {name: 'store_picture', maxCount: 1}]), async function (req, res, next) {
     const {p_info1, p_info2, p_info3, p_info4, p_info5, p_info6 } = req.body
     price_info = {p_info1, p_info2, p_info3, p_info4, p_info5, p_info6}
-    console.log('확인')
-    console.log(price_info)
-    await db.collection('USER').add({ ID: req.body.ID, Password: req.body.Password, Name: req.body.Name, Email: req.body.firstEmail + "@" + req.body.lastEmail,
-        store_name: req.body.store_name, store_address: req.body.store_address, store_number: req.body.store_number, main_number: req.body.main_number, price_info
+    var searchKeywords = new Array();
+
+    for(var i = 0; i < req.body.Name.length; i++){
+        searchKeywords[i] = req.body.Name.substr(0, i+1);
+    }
+
+    await db.collection('USER').add({ ID: req.body.ID, Password: req.body.Password, Name: req.body.Name, 
+        Email: req.body.firstEmail + "@" + req.body.lastEmail, store_name: req.body.store_name, searchKeywords,
+        store_address: req.body.store_address, store_number: req.body.store_number, main_number: req.body.main_number, price_info
     })
 
     var bufferStream = stream.PassThrough();
