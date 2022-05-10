@@ -86,8 +86,8 @@ router.post('/join_save', upload.fields([{name:'store_price', maxCount: 1}, {nam
     price_info = {p_info1, p_info2, p_info3, p_info4, p_info5, p_info6}
     var searchKeywords = new Array();
 
-    for(var i = 0; i < req.body.Name.length; i++){
-        searchKeywords[i] = req.body.Name.substr(0, i+1);
+    for(var i = 0; i < req.body.store_name.length; i++){
+        searchKeywords[i] = req.body.store_name.substr(0, i+1);
     }
 
     await db.collection('USER').add({ ID: req.body.ID, Password: req.body.Password, Name: req.body.Name, 
