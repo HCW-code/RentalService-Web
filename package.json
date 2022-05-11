@@ -25,6 +25,7 @@
     "nodemailer": "^6.7.4",
     "passport": "^0.5.2",
     "passport-local": "^1.0.0",
-    "session-file-store": "^1.5.0"
+    "session-file-store": "^1.5.0",
+    "stream": "^0.0.2"
   }
 }

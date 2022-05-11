@@ -438,9 +438,22 @@ router.get("/user-allow", async(req, res) => { //회원가입 승인 후 가격 
   var result = querySnapshot.data()
   emailsend.sendmail(allow = 1, toEmail = result.Email).catch(console.error);
 
-  querySnapshot = await db.collection('USER_allow').get()    
+  // 여기
+  // src="//dapi.kakao.com/v2/maps/sdk.js?appkey=24c1964f83338709346c0e7364a5d3ff&libraries=services"
+  // var geocoder = new kakao.maps.services.Geocoder();
+  // geocoder.addressSearch(doc.data().store_address, function (result, status) {   // 주소로 좌표를 검색합니다
+  //   // 정상적으로 검색이 완료됐으면 
+  //   if (status === kakao.maps.services.Status.OK && store) {
+  //       lat = result[0].y; // 위도
+  //       long = result[0].x; // 경도
+  //       console.log(long)
+  //       console.log(lat)
+  //   }
+  // });
+
+  querySnapshot = await db.collection('USER_allow').get()
   doc_id =  await (await db.collection('USER_allow').add(result)).id;
-  await db.collection('USER_allow').doc(doc_id).update({store_id: querySnapshot.docs.length})
+  await db.collection('USER_allow').doc(doc_id).update({store_id: querySnapshot.docs.length, 위도: lat, 경도: long})
   await db.collection('USER').doc(req.query.id).delete()
 
   res.redirect('/register_list?currentpage=1')
