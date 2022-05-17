@@ -1586,12 +1586,12 @@
 .icon-chevron-down:before {
     content: "\e874";
 }
-.icon-chevron-left:before {
+/* .icon-chevron-left:before {
     content: "\e875";
 }
 .icon-chevron-right:before {
     content: "\e876";
-}
+} */
 .icon-menu-circle:before {
     content: "\e87e";
 }

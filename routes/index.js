@@ -58,20 +58,22 @@ router.post('/join_save', upload.fields([{name:'store_price', maxCount: 1}, {nam
   for(var i = 0; i < req.body.store_name.length; i++){
       searchKeywords[i] = req.body.store_name.substr(0, i+1);
   }
-  await db.collection('USER').add({ ID: req.body.ID, Password: req.body.Password, Name: req.body.Name, Email: req.body.firstEmail + "@" + req.body.lastEmail,
-      store_name: req.body.store_name, store_address: req.body.store_address, store_number: req.body.store_number, main_number: req.body.main_number, price_info
-  })
+  
+  await db.collection('USER').add({ ID: req.body.ID, Password: req.body.Password, Name: req.body.Name, 
+    Email: req.body.firstEmail + "@" + req.body.lastEmail, store_name: req.body.store_name, searchKeywords,
+    store_address: req.body.store_address, store_number: req.body.store_number, main_number: req.body.main_number, price_info
+})
 
   var bufferStream = stream.PassThrough();
   bufferStream.end(Buffer.from(req.files.store_price[0].buffer, "ascii"));
-  let file = admin.storage().bucket().file( req.body.ID + '/'+ 'store_price');
+  let file = admin.storage().bucket().file( req.body.store_number + '/'+ 'store_price');
   bufferStream.pipe(file.createWriteStream({ metadata: { contentType: req.files.store_price[0].mimetype } }))
       .on("error", (err) => {console.log(err);})
   .on("finish", () => {console.log(req.files.store_price[0].originalname + " finish");});    
 
   bufferStream = stream.PassThrough();
   bufferStream.end(Buffer.from(req.files.store_picture[0].buffer, "ascii"));
-  file = admin.storage().bucket().file( req.body.ID + '/'+ 'store_picture');
+  file = admin.storage().bucket().file( req.body.store_number + '/'+ 'store_picture');
   bufferStream.pipe(file.createWriteStream({ metadata: { contentType: req.files.store_picture[0].mimetype } }))
       .on("error", (err) => {console.log(err);})
   .on("finish", () => {console.log(req.files.store_picture[0].originalname + " finish");});    
@@ -427,7 +429,7 @@ router.get("/user-deny", async(req, res) => { //회원가입 거부
   var result = querySnapshot.data()
   emailsend.sendmail(allow = 0, toEmail = result.Email).catch(console.error);
 
-  await admin.storage().bucket().deleteFiles({prefix: result.ID + '/'})    
+  await admin.storage().bucket().deleteFiles({prefix: result.store_number + '/'})    
   await db.collection('USER').doc(req.query.id).delete()
   
   res.redirect('/register_list?currentpage=1')
