@@ -303,7 +303,7 @@ router.post("/find_account", async function (req, res, next) {
 });
 
 router.get("/announcement", async function (req, res, next) {  //공지사항 게시판
- 
+  console.log("check")
   var { login, logout, users, admin } = auth.statusUI(req, res);
 
   const querySnapshot = await db.collection("web_anncmnt").get();

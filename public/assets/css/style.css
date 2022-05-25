@@ -843,7 +843,6 @@ textarea::-ms-input-placeholder{
 /*
 Nav Menu style
 ==================*/
-
 .navbar-brand {
     padding: 25px 15px;
 }
@@ -1246,6 +1245,37 @@ work Section style
 
 
 /*Footer section*/
+.footer_wrap{
+    height: 20rem;
+    width: 100%;
+    background-color: rgb(66, 72, 76);
+    scroll-snap-align: center;
+}
+
+.footer_Sitemap{
+    width: 1180px;
+    padding: 3rem 1rem 0px;
+    margin: 0px auto;
+    background-color: rgb(66, 72, 76);
+    display: flex;
+}
+
+.footer_section{
+    width: calc(33.3333%);
+}
+
+.text_no{
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    color: white;
+}
+.text_list{
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+
 .divider{
     width:100%;
     height: 1px;

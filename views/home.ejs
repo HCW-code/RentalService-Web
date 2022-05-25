@@ -41,7 +41,7 @@
         <script src="assets/js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     </head>
 
-    <body data-spy="scroll" data-target=".navbar-collapse">
+    <body>
 
 
         <!-- Preloader -->
@@ -59,36 +59,8 @@
 
         <div class="culmn">
             <!--Home page style-->
-
-
             <nav class="navbar navbar-default bootsnav navbar-fixed">
-                <div class="navbar-top bg-grey fix">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="navbar-callus text-left sm-text-center">
-                                    <ul class="list-inline">
-                                        <li><a href=""><i class="fa fa-phone"></i> Call us: 1234 5678 90</a></li>
-                                        <li><a href=""><i class="fa fa-envelope-o"></i> Contact us: your@email.com</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="navbar-socail text-right sm-text-center">
-                                    <ul class="list-inline">
-                                        <li><a href="announcement?currentpage=1">공지사항</a></a></li> <!--/Announcement-->
-                                        <li><a href="#">고객센터</a></a></li>  <!--/ServiceCenter-->
-                                        <li style="display: <%=login%>"><a href="/login">로그인</a></a></li> <!--/Login-->
-                                        <li style="display: <%=login%>"><a href="/join">회원가입</a></a></li> <!--/Join-->
-                                        <li style="display: <%=logout%>"><a href="/logout">로그아웃</a></a></li> <!--/Login-->
-                                        <li style="display: <%=logout%>"><a href="#"><%=users%>님 마이페이지</a></a></li> <!--/Join-->
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+            
                 <!-- Start Top Search -->
                 <div class="top-search">
                     <div class="container">
@@ -102,12 +74,7 @@
                 <!-- End Top Search -->
 
 
-                <div class="container"> 
-                    <div class="attr-nav">
-                        <ul>
-                            <li class="search"><a href="#"><i class="fa fa-search"></i></a></li>
-                        </ul>
-                    </div> 
+                <div class="container">                     
 
                     <!-- Start Header Navigation -->
                     <div class="navbar-header">
@@ -125,96 +92,24 @@
                     <!-- navbar menu -->
                     <div class="collapse navbar-collapse" id="navbar-menu">
                         <ul class="nav navbar-nav navbar-right">
+                            <li><a href="announcement?currentpage=1">공지사항</a></li>
                             <li style="display: <%=admin[0]%>"><a href=<%=admin[1]%>>매장변경 신청서 목록</a></li>
-                            <li style="display: <%=admin[0]%>"><a href=<%=admin[2]%>>회원가입 승인</a></li>
-                            <li><a href="/">Home</a></li>                            
+                            <li style="display: <%=admin[0]%>"><a href=<%=admin[2]%>>회원가입 승인</a></li>                            
                             <li><a href="information_change">매장정보 변경 신청</a></li>
-                            <li><a href="#business">이용가이드</a></li>
-                            <li><a href="#contact">검색</a></li>
+                            <li><a href="#">다운로드</a></li>
+                            <li style="display: <%=login%>"><a href="/login">로그인</a></li>
+                            <li style="display: <%=logout%>"><a href="#"><%=users%>님 마이페이지</a></a></li>
+                            <li style="display: <%=logout%>"><a href="/logout">로그아웃</a></li>
                         </ul>
                     </div><!-- /.navbar-collapse -->
                 </div> 
 
             </nav>
+                
 
             <!--Home Sections-->
 
-            <section id="home" class="home bg-black fix">
-                <div class="overlay"></div>
-                <div class="container">
-                    <div class="row">
-                        <div class="main_home text-center">
-                            <div class="col-md-12">
-                                <div class="hello_slid">
-                                    <div class="slid_item">
-                                        <div class="home_text ">
-                                            <!-- <h2 class="text-white">스키 의류 장비 <strong>가격비교</strong></h2> -->
-                                            <h1 class="text-white">스키 의류 장비 가격비교</h1>
-                                            <h3 class="text-white">- 전국 렌탈샵 업체 의류 장비를 한눈에 -</h3>
-                                        </div>                                        
-                                    </div><!-- End off slid item -->                                    
-                                    
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                    </div><!--End off row-->
-                </div><!--End off container -->
-            </section> <!--End off Home Sections-->
-
-
-
-            <!--Featured Section-->
-            <section id="features" class="features">
-                <div class="container">
-                    <div class="row">
-                        <div class="main_features fix roomy-70">
-                            <div class="col-md-4">
-                                <div class="features_item sm-m-top-30">
-                                    <div class="f_item_icon">
-                                        <i class="fa fa-thumbs-o-up"></i>
-                                    </div>
-                                    <div class="f_item_text">
-                                        <h3>Best Quality Design</h3>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit pellentesque eleifend
-                                            in sit amet mattis volutpat rhoncus.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="features_item sm-m-top-30">
-                                    <div class="f_item_icon">
-                                        <i class="fa fa-tablet"></i>
-                                    </div>
-                                    <div class="f_item_text">
-                                        <h3>Responsive Design</h3>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit pellentesque eleifend
-                                            in sit amet mattis volutpat rhoncus.</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="features_item sm-m-top-30">
-                                    <div class="f_item_icon">
-                                        <i class="fa fa-sliders"></i>
-                                    </div>
-                                    <div class="f_item_text">
-                                        <h3>Easy to Customize</h3>
-                                        <p>Lorem ipsum dolor sit amet consectetur adipiscing elit pellentesque eleifend
-                                            in sit amet mattis volutpat rhoncus.</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div><!-- End off row -->
-                </div><!-- End off container -->
-            </section><!-- End off Featured Section-->
-
-
-            <!--Business Section-->
-            <section id="business" class="business bg-grey roomy-70">
+            <section id="business" class="business bg-grey roomy-70" style="margin-top: 82px;">
                 <div class="container">
                     <div class="row">
                         <div class="main_business">
@@ -253,8 +148,8 @@
                                     <p class="m-top-20">이 어플은 전국 스키어, 보더들의 쉽고 편한 스키/보드 생활을 도와주는 어플입니다 :)</p>
 
                                     <div class="business_btn">
-                                        <a href="" class="btn btn-default m-top-20">더 보기</a>
-                                        <a href="" class="btn btn-primary m-top-20">어플 이용하기</a>
+                                        <a href="#" class="btn btn-default m-top-20">이용문의</a>
+                                        <a href="/join" class="btn btn-primary m-top-20">매장 등록</a>
                                     </div>
 
                                 </div>
@@ -262,7 +157,117 @@
                         </div>
                     </div>
                 </div>
-            </section><!-- End off Business section -->
+            </section>            
+
+
+            <div class="sc-jShwLY hShJPh" style="height: 20rem;
+            width: 100%;
+            background-color: white;
+            scroll-snap-align: center;">
+                <div class="sc-jXyOrd cHHTHg" style="    padding-top: 7rem;
+    text-align: center;
+    -webkit-box-pack: center;
+    justify-content: center;">
+                    <div class="sc-jMNeTn iLXEM" style="font-size: 1.3rem;
+                    color: rgb(66, 72, 76);
+                    margin-bottom: 0.5rem;
+                    display: flex;
+                    -webkit-box-pack: center;
+                    justify-content: center;">현재 <p class="sc-kNHJkd iRzzqa" style="    color: rgb(63, 195, 176);
+    border-bottom: 2px solid rgb(63, 195, 176);
+    margin: 0px 0px 0px 0.3rem;">0</p>개의 매장에서 MADE로</div>
+                    <div class="sc-jMNeTn iLXEM" style="font-size: 1.3rem;
+                    color: rgb(66, 72, 76);
+                    margin-bottom: 0.5rem;
+                    display: flex;
+                    -webkit-box-pack: center;
+                    justify-content: center;">렌탈샵 매장관리를 하고 있습니다.</div>
+                </div>
+            </div>
+
+            <div class="sc-khcwgy lnnbWb" style="background: url(assets/images/home.png); height: 640px;            
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            scroll-snap-align: center;">
+                <div class="pp" style="    width: 100%;
+                background-color: rgba(41, 39, 34, 0.50);
+                height: 100%;">
+                <div class="sc-jxlxwV fLAGJJ" style="width: 1180px;
+                margin: auto;
+                padding: 8.5rem 1rem 0px;
+                text-align: center;">
+                    <div class="sc-jCmXbY bbRaPR" style="    font-size: 1.9rem;
+                    font-weight: bold;
+                    color: white;
+                    word-break: keep-all;
+                    line-height: 4.5;">스키장 렌탈샵을 운영하는 최고의 방법 </div>
+                    <div class="sc-jHVeDX juzBsD" style="font-size: 1.3rem;
+                    color: white;
+                    word-break: keep-all;
+                    line-height: 2.2;
+                    display: flex;
+                    -webkit-box-pack: center;
+                    justify-content: center;">MADE는 스키장 렌탈샵을 가장 효과적으로 운영하시게 도와드립니다.</div>
+                    <div class="sc-jHVeDX juzBsD" style="font-size: 1.3rem;
+                    color: white;
+                    word-break: keep-all;
+                    line-height: 2.2;
+                    display: flex;
+                    -webkit-box-pack: center;
+                    justify-content: center;">매장 운영에 필요한 모든 기능을 담고 있습니다
+                    </div>
+                    <div class="sc-jHVeDX juzBsD" style="font-size: 1.3rem;
+                    color: white;
+                    word-break: keep-all;
+                    line-height: 2.2;
+                    display: flex;
+                    -webkit-box-pack: center;
+                    justify-content: center;">Lorem ipsum dolor sit amet consectetuer</div>
+                    <div class="sc-jHVeDX juzBsD" style="font-size: 1.3rem;
+                    color: white;
+                    word-break: keep-all;
+                    line-height: 2.2;
+                    display: flex;
+                    -webkit-box-pack: center;
+                    justify-content: center;">Lorem ipsum dolor sit amet consectetuer.</div>
+                </div>
+                </div>
+                
+            </div>
+
+            <!-- <section id="home" class="home bg-black fix">
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="row">
+                        <div class="main_home text-center">
+                            <div class="col-md-12">
+                                <div class="hello_slid">
+                                    <div class="slid_item">
+                                        <div class="home_text ">                                            
+                                            <h1 class="text-white">스키 의류 장비 가격비교</h1>
+                                            <h3 class="text-white">- 전국 렌탈샵 업체 의류 장비를 한눈에 -</h3>
+                                        </div>                                        
+                                    </div>
+                                    
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+            </section> -->
+
+
+
+
+            
+
+            <!--Business Section-->
+
+            <!-- End off Business section -->
 
 
             <!--product section-->
@@ -290,13 +295,13 @@
                                             <div class="col-sm-3">
                                                 <div class="port_item xs-m-top-30">
                                                     <div class="port_img">
-                                                        <img src="assets/images/review.png" alt="" />
+                                                        <img src="assets/images/review.png" alt="" style="-webkit-filter: blur(2px);"/>
                                                         <div class="port_overlay text-center">
                                                             <a href="assets/images/review.png" class="popup-img">+</a>
                                                         </div>
                                                     </div>
                                                     <div class="port_caption m-top-20">
-                                                        <h5>**렌트샵 이용하신</h5>
+                                                        <h5>**렌탈샵 이용하신</h5>
                                                         <h6>김** 고객님</h6>
                                                     </div>
                                                 </div>
@@ -304,13 +309,13 @@
                                             <div class="col-sm-3">
                                                 <div class="port_item xs-m-top-30">
                                                     <div class="port_img">
-                                                        <img src="assets/images/review.png" alt="" />
+                                                        <img src="assets/images/review.png" alt="" style="-webkit-filter: blur(2px);"/>
                                                         <div class="port_overlay text-center">
                                                             <a href="assets/images/review.png" class="popup-img">+</a>
                                                         </div>
                                                     </div>
                                                     <div class="port_caption m-top-20">
-                                                        <h5>**렌트샵 이용하신</h5>
+                                                        <h5>**렌탈샵 이용하신</h5>
                                                         <h6>박** 고객님</h6>
                                                     </div>
                                                 </div>
@@ -318,13 +323,13 @@
                                             <div class="col-sm-3">
                                                 <div class="port_item xs-m-top-30">
                                                     <div class="port_img">
-                                                        <img src="assets/images/review.png" alt="" />
+                                                        <img src="assets/images/review.png" alt="" style="-webkit-filter: blur(2px);"/>
                                                         <div class="port_overlay text-center">
                                                             <a href="assets/images/review.png" class="popup-img">+</a>
                                                         </div>
                                                     </div>
                                                     <div class="port_caption m-top-20">
-                                                        <h5>**렌트샵 이용하신</h5>
+                                                        <h5>**렌탈샵 이용하신</h5>
                                                         <h6>이** 고객님</h6>
                                                     </div>
                                                 </div>
@@ -332,13 +337,13 @@
                                             <div class="col-sm-3">
                                                 <div class="port_item xs-m-top-30">
                                                     <div class="port_img">
-                                                        <img src="assets/images/review.png" alt="" />
+                                                        <img src="assets/images/review.png" alt="" style="-webkit-filter: blur(2px);"/>
                                                         <div class="port_overlay text-center">
                                                             <a href="assets/images/review.png" class="popup-img">+</a>
                                                         </div>
                                                     </div>
                                                     <div class="port_caption m-top-20">
-                                                        <h5>**렌트샵 이용하신</h5>
+                                                        <h5>**렌탈샵 이용하신</h5>
                                                         <h6>나** 고객님</h6>
                                                     </div>
                                                 </div>
@@ -479,143 +484,61 @@
                 </div>
             </section> -->
 
-            
+            <div class="sc-kcRdTa exuCFh" style="    height: 25rem;
+            width: 100%; background-color: #f5f5f5;">
+                <div class="sc-kiivyf XgxRU" style="padding-top: 7rem;
+                font-size: 1.5rem;
+                color: rgb(66, 72, 76);
+                text-align: center;
+                -webkit-box-pack: center;
+                justify-content: center; margin-bottom: 15px;">어디에서나 쉽게 하는 매장관리</div>
+                <div class="sc-jwMghg kRsQqa" style="adding-top: 2rem;
+                -webkit-box-pack: justify;
+                justify-content: space-between;
+                text-align: center;"
+                ><a href="#" style="text-decoration: none;">
+                        <img src="assets/images/google.png"
+                            class="sc-jHvNoi dQYFsS" style="    height: 5.5rem;
+                            padding-top: 0.5rem;
+                            margin-right: 1rem;"></a> 
+                        <a href="#" style="text-decoration: none;">
+                            <img src="assets/images/apple.png"
+                            class="sc-jCdxMl bZUNVq" style="height: 5.5rem;
+                            padding-top: 0.5rem;
+                            margin-left: 1rem;"></a></div>
+            </div>
 
             
 
-
-            <!--Call to  action section-->
-            <section id="action" class="action bg-primary roomy-40">
-                <div class="container">
-                    <div class="row">
-                        <div class="maine_action">
-                            <div class="col-md-8">
-                                <div class="action_item text-center">
-                                    <h2 class="text-white text-uppercase">Your Promotion Text Will Be Here</h2>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="action_btn text-left sm-text-center">
-                                    <a href="" class="btn btn-default">Purchase Now</a>
-                                </div>
-                            </div>
-                        </div>
+            <footer class="footer_wrap">
+                <div class="footer_Sitemap">
+                    <div class="footer_section">
+                        <div class="text_no">회사정보</div>
+                        <div class="text_list">회사명: (주)캡스톤</div>
+                        <div class="text_list">사업자 등록 번호: 123-45-6789</div>
+                        <div class="text_list">대표: 김스키</div>
+                        <div class="text_list">주소: 충남 천안시 동남구 상명대길 31</div>
+                    </div>
+                    <div class="footer_section">
+                        <div class="text_no">고객센터</div>
+                        <div class="text_list">충남 천안시 동남구 상명대길 31</div>
+                        <div class="text_list">1600-1600</div>
+                        <div class="text_list">cstonefg@gmail.com</div>
+                        <div class="text_list">운영시간 : 10:00 ~ 22:00</div>
+                    </div>
+                    <div class="footer_section">
+                        <div class="text_no">링크</div>
+                        <a href="#" style="text-decoration: none;">
+                            <div class="text_list">서비스 소개</div>
+                        </a>
+                        <a href="#" style="text-decoration: none;">
+                            <div class="text_list">이용 약관</div>
+                        </a>
+                        <a href="#" style="text-decoration: none;">
+                            <div class="text_list">개인정보처리방침</div>
+                        </a>
                     </div>
                 </div>
-            </section>
-
-
-
-
-            <footer id="contact">
-                <!--<div class="action-lage"></div>-->
-                <div class="container">
-                    <div class="row">
-                        <div class="widget_area">
-                            <div class="col-md-3">
-                                <div class="widget_item widget_about">
-                                    <h5 class="text-white">About Us</h5>
-                                    <p class="m-top-20">Lorem ipsum dolor sit amet consec tetur adipiscing elit 
-                                        nulla aliquet pretium nisi in cursus 
-                                        maecenas nec eleifen.</p>
-                                    <div class="widget_ab_item m-top-30">
-                                        <div class="item_icon"><i class="fa fa-location-arrow"></i></div>
-                                        <div class="widget_ab_item_text">
-                                            <!-- <h6 class="text-white">Location</h6> -->
-                                            <p>
-                                                123 suscipit ipsum nam auctor
-                                                mauris dui, ac sollicitudin mauris,
-                                                Bandung</p>
-                                        </div>
-                                    </div>
-                                    <div class="widget_ab_item m-top-30">
-                                        <div class="item_icon"><i class="fa fa-phone"></i></div>
-                                        <div class="widget_ab_item_text">
-                                            <!-- <h6 class="text-white">Phone :</h6> -->
-                                            <p>+1 2345 6789</p>
-                                        </div>
-                                    </div>
-                                    <div class="widget_ab_item m-top-30">
-                                        <div class="item_icon"><i class="fa fa-envelope-o"></i></div>
-                                        <div class="widget_ab_item_text">
-                                            <!-- <h6 class="text-white">Email Address :</h6> -->
-                                            <p>cstonefg@gmail.com</p>
-                                        </div>
-                                    </div>
-                                </div><!-- End off widget item -->
-                            </div><!-- End off col-md-3 -->
-
-                            <div class="col-md-3">
-                                <div class="widget_item widget_latest sm-m-top-50">
-                                    <h5 class="text-white">Latest News</h5>
-                                    <div class="widget_latst_item m-top-30">
-                                        <div class="item_icon"><img src="assets/images/ltst-img-1.jpg" alt="" /></div>
-                                        <div class="widget_latst_item_text">
-                                            <p>Lorem ipsum dolor sit amet, consectetur</p>
-                                            <a href="">21<sup>th</sup> July 2016</a>
-                                        </div>
-                                    </div>
-                                    <div class="widget_latst_item m-top-30">
-                                        <div class="item_icon"><img src="assets/images/ltst-img-2.jpg" alt="" /></div>
-                                        <div class="widget_latst_item_text">
-                                            <p>Lorem ipsum dolor sit amet, consectetur</p>
-                                            <a href="">21<sup>th</sup> July 2016</a>
-                                        </div>
-                                    </div>
-                                    <div class="widget_latst_item m-top-30">
-                                        <div class="item_icon"><img src="assets/images/ltst-img-3.jpg" alt="" /></div>
-                                        <div class="widget_latst_item_text">
-                                            <p>Lorem ipsum dolor sit amet, consectetur</p>
-                                            <a href="">21<sup>th</sup> July 2016</a>
-                                        </div>
-                                    </div>
-                                </div><!-- End off widget item -->
-                            </div><!-- End off col-md-3 -->
-
-                            <div class="col-md-3">
-                                <div class="widget_item widget_service sm-m-top-50">
-                                    <h5 class="text-white">Latest News</h5>
-                                    <ul class="m-top-20">
-                                        <li class="m-top-20"><a href=""><i class="fa fa-angle-right"></i> Web Design</a></li>
-                                        <li class="m-top-20"><a href=""><i class="fa fa-angle-right"></i> User Interface Design</a></li>
-                                        <li class="m-top-20"><a href=""><i class="fa fa-angle-right"></i> E- Commerce</a></li>
-                                        <li class="m-top-20"><a href=""><i class="fa fa-angle-right"></i> Web Hosting</a></li>
-                                        <li class="m-top-20"><a href=""><i class="fa fa-angle-right"></i> Themes</a></li>
-                                        <li class="m-top-20"><a href=""><i class="fa fa-angle-right"></i> Support Forums</a></li>
-                                    </ul>
-                                </div><!-- End off widget item -->
-                            </div><!-- End off col-md-3 -->
-
-                            <div class="col-md-3">
-                                <div class="widget_item widget_newsletter sm-m-top-50">
-                                    <h5 class="text-white">Newsletter</h5>
-                                    <form class="form-inline m-top-30">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Enter you Email">
-                                            <button type="submit" class="btn text-center"><i class="fa fa-arrow-right"></i></button>
-                                        </div>
-
-                                    </form>
-                                    <div class="widget_brand m-top-40">
-                                        <a href="" class="text-uppercase">Your Logo</a>
-                                        <p>Lorem ipsum dolor sit amet consec tetur 
-                                            adipiscing elit nulla aliquet pretium nisi in</p>
-                                    </div>
-                                    <ul class="list-inline m-top-20">
-                                        <li>-  <a href=""><i class="fa fa-facebook"></i></a></li>
-                                        <li><a href=""><i class="fa fa-twitter"></i></a></li>
-                                        <li><a href=""><i class="fa fa-linkedin"></i></a></li>
-                                        <li><a href=""><i class="fa fa-google-plus"></i></a></li>
-                                        <li><a href=""><i class="fa fa-behance"></i></a></li>
-                                        <li><a href=""><i class="fa fa-dribbble"></i></a>  - </li>
-                                    </ul>
-
-                                </div><!-- End off widget item -->
-                            </div><!-- End off col-md-3 -->
-                        </div>
-                    </div>
-                </div>
-                
             </footer>
 
 
