@@ -9,7 +9,6 @@ var FileStore = require('session-file-store')(session);
 var passport = require('passport')
 
 var indexRouter = require('./routes/index');
-//var bbsRouter = require('./routes/bbs');  //routes/bbs.js 파일을 가지고 웹 게시판 작동
 
 var app = express();
 
@@ -46,7 +45,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', indexRouter);
-//app.use('/bbs', bbsRouter);  //추가
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

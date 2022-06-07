@@ -58,8 +58,7 @@ function checkId() {
         error[0].style.color = "red";
         error[0].style.display = "block";
         return false;
-    } else {
-        console.log("여긴데?"+id.value);
+    } else {        
         $.ajax({
             url : "/check_overlap",
             type : "POST",
